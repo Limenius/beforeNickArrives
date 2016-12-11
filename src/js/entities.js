@@ -4,7 +4,10 @@ const entities = {
     '#0000ff' : {
         name: 'sofa',
         actions: {
-            LOOK : 'A sofa. Looks cozy, but Matt is sitting on it',
+            LOOK : {
+                text: 'A sofa. Looks cozy, but Matt is sitting on it',
+                timeout: 3000,
+            }
         }
     }
 }

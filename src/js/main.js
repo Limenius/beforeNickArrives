@@ -47,6 +47,8 @@ class Game {
         this.state = {
             entity: null,
             action: 'LOOK',
+            talkingTextTime: null,
+            talkingTextTimeOut: 0,
         }
         Promise.all( [this.loadGraphics()] )
         .then( ([{loader, resources}]) => {
@@ -91,13 +93,17 @@ class Game {
 
         this.renderer.view.addEventListener('mousemove', this.mouseMove.bind(this));
         this.renderer.view.addEventListener('click', this.click.bind(this));
+
+        this.animate();
     }
 
     click(evt) {
         var mousePos = this.getMousePos(evt);
         const entity = this.getMapCoord(mousePos.x, mousePos.y);
         if (entity) {
-            this.talkingText.text = entity.actions[this.state.action];
+            this.talkingText.text = entity.actions[this.state.action].text;
+            this.state.talkingTextTime = new Date();
+            this.state.talkingTextTimeout = entity.actions[this.state.action].timeout;
         } else {
             this.talkingText.text = '';
         }
@@ -133,6 +139,11 @@ class Game {
 
     animate() {
         var now = new Date();
+        if (this.state.talkingTextTime) {
+            if (now.getTime() - this.state.talkingTextTime.getTime() > this.state.talkingTextTimeout) {
+                this.talkingText.text = '';
+            }
+        }
         if (this.time) {
             this.renderer.render(this.stage);
         }
