@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "Pixilator";
+  src: url('../fonts/pixilator.eot');
+  src: url('../fonts/pixilator.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/pixilator.woff') format('woff'),
+       url('../fonts/pixilator.ttf') format('truetype'),
+       url('../fonts/pixilator.svg#Pixilator') format('svg');
+}
+
+body {
+  font-family: 'Pixilator',sans-serif;
+  color: black;
+}
+
+@font-face {
+  font-family: "Foo";
+  src: url("https://fonts.gstatic.com/l/font?kit=Yp0zMo6-TKMbL3MFGlgAKEcqwH9zdArWjc7XlrFd-2TsPXYqTGLZ2U8sggWmBN11vY_KnrbECKVYwT5jML176E-hCdHeAh1EypZggr0U53BuXxQghSWdr5fKRAiL7DYm") format("woff");
+}
+
