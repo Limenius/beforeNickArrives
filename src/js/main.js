@@ -34,12 +34,12 @@ class Game {
         this.rendererMap.view.style.top = '0px';
         this.rendererMap.view.style.left = '0px';
 
-        this.statusText = new PIXI.Text('',{font : '18px Pixilator', fill : 0xffffff, 'text-align' : 'center'});
+        this.statusText = new PIXI.Text('',{font : '18px Pixilator', fill : 0xeeeeee, 'text-align' : 'center'});
         this.statusText.anchor.set(0.5, 0.5);
         this.statusText.x = 500;
         this.statusText.y = 520;
 
-        this.talkingText = new PIXI.Text('',{font : '18px Pixilator', fill : 0xffffff, 'text-align' : 'center'});
+        this.talkingText = new PIXI.Text('',{font : '18px Pixilator', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
         this.talkingText.anchor.set(0.5, 0.5);
         this.talkingText.x = 500;
         this.talkingText.y = 50;
@@ -69,7 +69,7 @@ class Game {
     }
 
     onLoad(loader, resources) {
-        var bgTexture = new PIXI.Texture(resources.bgMap.texture, new PIXI.Rectangle(0, 0, 1000, 480));
+        var bgTexture = new PIXI.Texture(resources.bg.texture, new PIXI.Rectangle(0, 0, 1000, 480));
         var background = new PIXI.Sprite(bgTexture);
         background.anchor.x = 0;
         background.anchor.y = 0;
@@ -131,7 +131,7 @@ class Game {
     }
 
     getMapCoord(x, y) {
-        var imgd = this.renderer.view.getContext('2d').getImageData(x, y, 1, 1);
+        var imgd = this.rendererMap.view.getContext('2d').getImageData(x, y, 1, 1);
         var pix = imgd.data;
         var hex = '#' + ('000000' + rgbToHex(pix[0], pix[1], pix[2])).slice(-6);
         return entities[hex];
