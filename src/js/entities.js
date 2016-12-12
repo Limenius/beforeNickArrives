@@ -86,7 +86,7 @@ const entities = {
         name: 'the shelves',
         actions: {
             LOOK : {
-                text: 'Those shelves are full of books.\nI don\'t think any of these guys has ever opened one.',
+                text: 'I think I haven\'t read any of these books.',
                 timeout: 3000,
             }
         }
@@ -149,7 +149,7 @@ const entities = {
         name: 'the clock',
         actions: {
             LOOK : {
-                text: 'It is not stopped showing the time of the murder, how disappointing.',
+                text: 'It is not stopped at the time of the murder, how disappointing.',
                 timeout: 2000,
             }
         }
@@ -209,10 +209,10 @@ const entities = {
         }
     },
     '#e06f8b' : {
-        name: 'Spencer',
+        name: 'Matt',
         actions: {
             LOOK : {
-                text: 'That\'s Spencer. A sensible man. He could bet his mother in a poker hand,\nbut we all have our issues...',
+                text: 'That\'s Matt. A sensible man. He could bet his mother in a poker hand,\nbut we all have our issues...',
                 timeout: 4000,
             }
         }
