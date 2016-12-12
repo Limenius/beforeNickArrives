@@ -25,6 +25,11 @@ const offsetH = 150;
 
 class Game {
     constructor() {
+
+        this.mouseMove = this.mouseMove.bind(this);
+        this.click = this.click.bind(this);
+        this.clickDialog = this.clickDialog.bind(this);
+
         this.renderer = PIXI.autoDetectRenderer(1000, 480 + offsetH, null, {noWebGl: true, antialias: false});
         this.stage = new PIXI.Container();
         document.getElementById('main-container').appendChild(this.renderer.view);
@@ -45,18 +50,18 @@ class Game {
         this.talkingText.x = 500;
         this.talkingText.y = 50;
 
-
-
         this.uiState = {
             entity: null,
             action: 'LOOK',
             talkingTextTime: null,
             talkingTextTimeOut: 0,
+            dialogOptions: [],
         }
 
         this.gameState = {
             dialogs: dialogs,
         }
+
         Promise.all( [this.loadGraphics()] )
         .then( ([{loader, resources}]) => {
             this.onLoad(loader, resources)
@@ -132,10 +137,40 @@ class Game {
         this.imgMap.addChild(imgMapBg);
         this.rendererMap.render(this.imgMap);
 
-        this.renderer.view.addEventListener('mousemove', this.mouseMove.bind(this));
-        this.renderer.view.addEventListener('click', this.click.bind(this));
+        this.setUpUIEvents();
 
         this.animate();
+    }
+
+    setUpUIEvents() {
+        this.removeEvents();
+        this.renderer.view.addEventListener('mousemove', this.mouseMove);
+        this.renderer.view.addEventListener('click', this.click);
+    }
+    setUpDialogEvents() {
+        this.removeEvents();
+        //this.renderer.view.addEventListener('mousemove', this.mouseMove);
+        this.renderer.view.addEventListener('click', this.clickDialog);
+    }
+
+    clickDialog(evt) {
+        var mousePos = this.getMousePos(evt);
+        const line = this.getDialogOption(mousePos.x, mousePos.y);
+    }
+
+    getDialogOption(x, y) {
+        if (y < 530) {
+            return null;
+        }
+        const index = Math.floor((y - 530) / 30);
+        const line = this.uiState.dialogOptions[index];
+        this.setTalkingText(line.response, line.timeout);
+    }
+
+    removeEvents() {
+        this.renderer.view.removeEventListener('mousemove', this.mouseMove);
+        this.renderer.view.removeEventListener('click', this.click);
+        this.renderer.view.removeEventListener('click', this.clickDialog);
     }
 
     click(evt) {
@@ -157,15 +192,18 @@ class Game {
     }
 
     runAction(entity, action) {
-        console.log(entity);
         if (action == 'TALK') {
             if (dialogs[entity.key]) {
                 return this.runDialog(dialogs[entity.key]);
             }
         }
-        this.talkingText.text = action.text;
+        setTalkingText(entity.actions[action].text, entity.actions[action].timeout);
+    }
+
+    setTalkingText(text, timeout) {
+        this.talkingText.text = text;
         this.uiState.talkingTextTime = new Date();
-        this.uiState.talkingTextTimeout = action.timeout;
+        this.uiState.talkingTextTimeout = timeout;
     }
 
     runDialog(dialog) {
@@ -177,14 +215,15 @@ class Game {
         this.uiDialog.removeChildren();
         const keys = Object.keys(dialog);
         const textStyle = {fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeee, 'text-align' : 'left', align: 'left'}
+        this.uiState.dialogOptions = [];
         for (let i = 0; i < keys.length; i++) {
-            console.log(dialog[keys[i]]);
-            console.log(dialog[keys[i]].text);
             var option = new PIXI.Text(keys[i], textStyle);
             option.x = 20;
             option.y = i * 30;
+            this.uiState.dialogOptions.push(dialog[keys[i]]);
             this.uiDialog.addChild(option);
         }
+        this.setUpDialogEvents();
     }
 
     mouseMove(evt) {
