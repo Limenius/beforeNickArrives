@@ -207,9 +207,7 @@ class Game {
         background.position.x = 0;
         background.position.y = 0;
 
-
         this.background = background;
-
 
         var imgMapTexture = new PIXI.Texture(resources.bgMap.texture, new PIXI.Rectangle(0, 0, 1000, 480));
         var imgMapBg = new PIXI.Sprite(imgMapTexture);
@@ -424,10 +422,15 @@ class Game {
                 this.uiDialog.renderable = false;
                 this.uiActions.renderable = true;
                 this.setUpUIEvents();
-                if (this.gameState.hasTalked.length == 6) {
-                    setTimeout(() => {this.setTalkingText('Ok, I think I have talked with everybody, now what?', 5000)}, 4000);
+                if (this.gameState.hasTalked.length == 1) {
+                    setTimeout(() => {
+                        this.setTalkingText('Ok, I think I have talked to everybody, now what?', 4000);
+                        this.renderNewUIActions();
+                        console.log(this.songId);
+                        this.sound.pause(this.songId);
+                        this.songId = this.sound.play('song2');
+                    }, 3000);
                     this.act = 2;
-                    this.renderNewUIActions();
                 }
                 return;
             case 'LOOK BODY':

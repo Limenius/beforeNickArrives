@@ -8,7 +8,7 @@ export default class Sound {
         return new Promise( (resolve, reject) => {
             this.sounds = {
                 song1 : new Howl({
-                    src: ['./dist/music/song1.mp3'],
+                    src: ['./dist/music/song3.mp3'],
                     loop: true,
                     volume: 0.5,
                     onload: function() {
@@ -24,7 +24,7 @@ export default class Sound {
                     }
                 }),
                 song3 : new Howl({
-                    src: ['./dist/music/song3.mp3'],
+                    src: ['./dist/music/song1.mp3'],
                     loop: true,
                     volume: 0.5,
                     onload: function() {
