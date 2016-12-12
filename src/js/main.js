@@ -141,7 +141,6 @@ class Game {
     }
 
     onLoad(loader, resources) {
-        this.sound.play('song1');
         var bgTexture = new PIXI.Texture(resources.bg.texture, new PIXI.Rectangle(0, 0, 1000, 480));
         var background = new PIXI.Sprite(bgTexture);
         background.anchor.x = 0;
@@ -154,6 +153,7 @@ class Game {
         this.renderUI();
         this.renderDialogUI();
         this.renderer.render(this.stage);
+        this.songId = this.sound.play('song1');
 
         var imgMapTexture = new PIXI.Texture(resources.bgMap.texture, new PIXI.Rectangle(0, 0, 1000, 480));
         var imgMapBg = new PIXI.Sprite(imgMapTexture);
@@ -356,10 +356,11 @@ class Game {
                 this.setUpUIEvents();
                 if (this.gameState.hasTalked.length == 1) {
                     setTimeout(() => {
-                        this.setTalkingText('Ok, I think I have talked with everybody, now what?', 4000);
+                        this.setTalkingText('Ok, I think I have talked to everybody, now what?', 4000);
                         this.renderNewUIActions();
-                        this.sound.stop('song1');
-                        this.sound.play('song2');
+                        console.log(this.songId);
+                        this.sound.pause(this.songId);
+                        this.songId = this.sound.play('song2');
                     }, 3000);
                     this.act = 2;
                 }
