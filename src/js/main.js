@@ -156,6 +156,8 @@ class Game {
     clickDialog(evt) {
         var mousePos = this.getMousePos(evt);
         const line = this.getDialogOption(mousePos.x, mousePos.y);
+        this.setTalkingText(line.response, line.timeout);
+        this.dispatch(line.action);
     }
 
     getDialogOption(x, y) {
@@ -164,7 +166,7 @@ class Game {
         }
         const index = Math.floor((y - 530) / 30);
         const line = this.uiState.dialogOptions[index];
-        this.setTalkingText(line.response, line.timeout);
+        return line;
     }
 
     removeEvents() {
@@ -197,7 +199,7 @@ class Game {
                 return this.runDialog(dialogs[entity.key]);
             }
         }
-        setTalkingText(entity.actions[action].text, entity.actions[action].timeout);
+        this.setTalkingText(entity.actions[action].text, entity.actions[action].timeout);
     }
 
     setTalkingText(text, timeout) {
@@ -247,6 +249,12 @@ class Game {
         if (x > 0 && x < 333 && y > 510 && y < 550) {
             return 'TALK';
         }
+        if (x > 333 && x < 666 && y > 510 && y < 550) {
+            return 'LOOK';
+        }
+        if (x > 666 && x > 1000 && y > 510 && y < 550) {
+            return 'TOUCH';
+        }
     }
 
     getMousePos(evt) {
@@ -278,6 +286,18 @@ class Game {
         this.time = now;
         requestAnimationFrame(this.animate.bind(this));
         return this;
+    }
+
+    dispatch(action) {
+        switch (action.type) {
+            case 'END DIALOG':
+                this.uiDialog.renderable = false;
+                this.uiActions.renderable = true;
+                this.setUpUIEvents();
+                return;
+            default:
+                return;
+        }
     }
 
 }

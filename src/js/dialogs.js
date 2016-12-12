@@ -2,7 +2,7 @@ const dialogs = {
     MATT: {
         'Hi there': {
             response: 'Can\'t I just enjoy the party for a while?',
-            available: false,
+            available: true,
             timeout: 2000,
             tag: 'introductory',
             action: {
@@ -20,13 +20,8 @@ const dialogs = {
             available: true,
             tag: 'introductory',
             action: {
-                type: 'hasTalked',
-                character: 'MATT',
+                type: 'END DIALOG',
             }
-
-            //dispatch(state) => {dis
-            //    state.hasTalked.push('MATT');
-            //    {...state, hasTalked} }
         }
     },
     FLYNN: {
