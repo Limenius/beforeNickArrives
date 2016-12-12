@@ -206,6 +206,7 @@ class Game {
         }
         console.log(action);
         if (!entity.actions[action]) {
+            this.setTalkingText("I can\'t do that.", 1500);
             return;
         }
         if (entity.actions[action].trigger) {

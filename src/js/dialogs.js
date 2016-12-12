@@ -21,7 +21,7 @@ const dialogs = {
             }
         },
         'Have you been here long?': {
-            response: 'Not much.\nWas almost everything already here when I arrived.',
+            response: 'Not much.\nWas almost everyone already here when I arrived.',
             available: false,
             timeout: 2500,
             tag: 'after-look-body',
