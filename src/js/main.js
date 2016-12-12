@@ -148,7 +148,6 @@ class Game {
         this.stage.addChild(this.statusText);
         this.stage.addChild(this.talkingText);
         this.renderUI();
-        this.renderNewUIActions();
         this.renderDialogUI();
         this.renderer.render(this.stage);
 
@@ -282,8 +281,7 @@ class Game {
     }
 
     getVerb(x, y) {
-        var act = 2;
-        if (act == 1) {
+        if (this.act == 1) {
             if (x > 0 && x < 333 && y > 510 && y < 540) {
                 return 'TALK';
             }
@@ -352,8 +350,10 @@ class Game {
                 this.uiDialog.renderable = false;
                 this.uiActions.renderable = true;
                 this.setUpUIEvents();
-                if (this.gameState.hasTalked.length == 1) {
+                if (this.gameState.hasTalked.length == 6) {
                     setTimeout(() => {this.setTalkingText('Ok, I think I have talked with everybody, now what?', 5000)}, 4000);
+                    this.act = 2;
+                    this.renderNewUIActions();
                 }
                 return;
             case 'LOOK BODY':
