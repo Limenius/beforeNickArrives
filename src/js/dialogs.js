@@ -289,7 +289,15 @@ const dialogs = {
             interrogate: true
         },
         'Do you recognize this phone number?': {
-            response: 'Oh, leave me alone!',
+            response: 'Oh, leave me alone.',
+            available: false,
+            timeout: 2000,
+            tag: 'after-frisk-flynn',
+            act: 1,
+            interrogate: true
+        },
+        'Ehem... nice pearls in this picture, Lora': {
+            response: 'WHERE DID YOU GET THAT FROM?!',
             available: false,
             timeout: 2000,
             tag: 'after-frisk-flynn',

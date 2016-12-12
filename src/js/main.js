@@ -377,6 +377,9 @@ class Game {
             case 'FRISK FLYNN':
                 this.makeDialogAvailableByTag('after-frisk-flynn');
                 return;
+            case 'FRISK MOOSE':
+                this.makeDialogAvailableByTag('after-frisk-moose');
+                return;
             case 'HAS TALKED':
                 if (this.gameState.hasTalked.indexOf(action.character) == -1) {
                     this.gameState.hasTalked.push(action.character);

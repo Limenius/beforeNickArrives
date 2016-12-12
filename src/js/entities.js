@@ -34,6 +34,9 @@ const entities = {
             FRISK : {
                 text: 'Oh, something fell from behind...\nIt\'s a picture of Lora wearing a pearl collar...\nActually, wearing ONLY a pearl collar.',
                 timeout: 7000,
+                trigger: {
+                    type: 'FRISK MOOSE',
+                }
             }
         }
     },
@@ -440,7 +443,7 @@ const entities = {
         name: 'glass with tequila',
         actions: {
             LOOK : {
-                text: 'It is a glass full of tequila.',
+                text: 'It is a glass full with tequila.',
                 timeout: 2000,
             },
             TOUCH : {
@@ -453,11 +456,11 @@ const entities = {
             },
         }
     },
-    '#369d9e' : {
+    '#369e9d' : {
         name: 'glass with tequila',
         actions: {
             LOOK : {
-                text: 'It is a glass full of tequila.',
+                text: 'It is a glass full with tequila.',
                 timeout: 2000,
             },
             TOUCH : {
@@ -538,7 +541,7 @@ const entities = {
             },
         }
     },
-    '#762450' : {
+    '#7624C5' : {
         name: 'painting',
         actions: {
             LOOK : {
