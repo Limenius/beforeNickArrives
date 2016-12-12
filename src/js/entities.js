@@ -47,6 +47,18 @@ const entities = {
                 text: 'That would help, ugh?',
                 timeout: 2000,
             },
+            INSPECT : {
+                text: 'He was shot.\nHe has some stuff in his pockets.',
+                timeout: 2000,
+            },
+            FRISK : {
+                text: 'Ok... A threatening note with Matt\'s writing,\na check, a pack of cigarettes,\nand a handwritten phone number that sounds familiar.',
+                timeout: 5000,
+            },
+            INTERROGATE : {
+                text: 'It seems impolite.',
+                timeout: 2000,
+            },
         }
     },
     '#ae289d' : {
@@ -115,7 +127,7 @@ const entities = {
             TOUCH : {
                 text: 'I have no time for a walk.\nI need to figure out what happened here.',
                 timeout: 1500,
-            }
+            },
         }
     },
     '#ffffff' : {
@@ -129,7 +141,15 @@ const entities = {
             TOUCH : {
                 text: 'No, thanks, I\'m gonna keep my hands here.',
                 timeout: 1500,
-            }
+            },
+            INSPECT : {
+                text: 'He looks confused. Which is not much to say.',
+                timeout: 3000,
+            },
+            FRISK : {
+                text: 'A fast diet book...? And a gun.',
+                timeout: 5000,
+            },
         }
     },
     '#493c2b' : {
@@ -182,7 +202,15 @@ const entities = {
             TOUCH : {
                 text: 'No, thanks, I\'m gonna keep my hands here.',
                 timeout: 1000,
-            }
+            },
+            INSPECT : {
+                text: 'He seems happy.\nI thought he was fond of the new guy.',
+                timeout: 3000,
+            },
+            FRISK : {
+                text: 'Some unpaid bills, and his gun.',
+                timeout: 5000,
+            },
         }
     },
     '#44891a' : {
@@ -196,7 +224,15 @@ const entities = {
             TOUCH : {
                 text: 'Not my type.',
                 timeout: 1000,
-            }
+            },
+            INSPECT : {
+                text: 'She looks as she as doesn\'t give a shit.\nShe may sound even more irritated that usually...\nHard to say.',
+                timeout: 4000,
+            },
+            FRISK : {
+                text: 'Sorry dear, just a sec.\nOk... Lipstick and a gun. A practical girl.',
+                timeout: 5000,
+            },
         }
     },
     '#c2c879' : {
@@ -250,6 +286,14 @@ const entities = {
                 text: 'No, thanks. Life is hard, but I\'d rather stay around a bit more.',
                 timeout: 2500,
             },
+            INSPECT : {
+                text: 'He looks calm... Thankfully.',
+                timeout: 3000,
+            },
+            FRISK : {
+                text: 'I really hate my job.\n Let\'s see... Cigarettes and a gun. Big surprise.',
+                timeout: 5000,
+            },
         }
     },
     '#1b2632' : {
@@ -269,7 +313,7 @@ const entities = {
         name: 'the curtains',
         actions: {
             LOOK : {
-                text: 'My mother use to hate that type of curtains.\nThey accumulate so much dust...',
+                text: 'The are red.\nI wish the carpet was that same color.',
                 timeout: 3500,
             },
             TOUCH : {
@@ -316,6 +360,14 @@ const entities = {
                 text: 'I\'m not in the mood.',
                 timeout: 2000,
             },
+            INSPECT : {
+                text: 'He looks very concentrated in his guitar.',
+                timeout: 3000,
+            },
+            FRISK : {
+                text: 'A gun... And a picture with Lora.\n They were together some time ago.\nI thought he had got over it.',
+                timeout: 5000,
+            },
         }
     },
     '#e06f8b' : {
@@ -329,6 +381,14 @@ const entities = {
             TOUCH : {
                 text: 'I don\'t think he would approve.',
                 timeout: 2000,
+            },
+            INSPECT : {
+                text: 'He looks nervous.',
+                timeout: 3000,
+            },
+            FRISK : {
+                text: 'Just a deck of cards... and a gun.',
+                timeout: 5000,
             },
         }
     },
