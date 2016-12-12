@@ -73,7 +73,7 @@ class Game {
     renderDialogUI() {
         this.uiDialog = new PIXI.Container();
         this.uiDialog.position.x = 0;
-        this.uiDialog.position.y = 530;
+        this.uiDialog.position.y = 510;
         this.stage.addChild(this.uiDialog);
     }
 
@@ -168,7 +168,7 @@ class Game {
         if (y < 530) {
             return null;
         }
-        const index = Math.floor((y - 530) / 30);
+        const index = Math.floor((y - 510) / 30);
         const line = this.uiState.dialogOptions[index];
         return line;
     }

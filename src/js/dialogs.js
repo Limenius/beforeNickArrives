@@ -20,6 +20,16 @@ const dialogs = {
                 character: 'MATT',
             }
         },
+        'Have you been here long?': {
+            response: 'Not much.\nWas almost everything already here when I arrived.',
+            available: false,
+            timeout: 2500,
+            tag: 'after-look-body',
+            trigger: {
+                type: 'HAS TALKED',
+                character: 'MATT',
+            }
+        },
         'Talk to you later': {
             response: 'Sure',
             timeout: 2000,
@@ -31,7 +41,7 @@ const dialogs = {
         }
     },
     FLYNN: {
-        'Hi there, Flynn': {
+        'Hi there, Flynn.': {
             response: 'Hi, Jack. This sounds quite good, ugh?',
             available: true,
             timeout: 2500,
@@ -43,7 +53,17 @@ const dialogs = {
             tag: 'after-look-body',
             trigger: {
                 type: 'HAS TALKED',
-                character: 'MATT',
+                character: 'FLYNN',
+            }
+        },
+        'Have you seen someone acting weird?': {
+            response: 'People ARE weird Jack, you should know that.',
+            available: false,
+            timeout: 2500,
+            tag: 'after-look-body',
+            trigger: {
+                type: 'HAS TALKED',
+                character: 'FLYNN',
             }
         },
         'Ok, enough for now.': {
@@ -72,6 +92,16 @@ const dialogs = {
                 character: 'MATT',
             }
         },
+        'Why are you at the door?': {
+            response: 'I just arrived. I thought\nyou would like me to watch the door.',
+            available: false,
+            timeout: 2500,
+            tag: 'after-look-body',
+            trigger: {
+                type: 'HAS TALKED',
+                character: 'FLYNN',
+            }
+        },
         'Hold in there.': {
             response: 'As you say, Jack.',
             timeout: 2000,
@@ -95,7 +125,17 @@ const dialogs = {
             tag: 'after-look-body',
             trigger: {
                 type: 'HAS TALKED',
-                character: 'MATT',
+                character: 'TONNY',
+            }
+        },
+        'Who was in the room when you came in?': {
+            response: 'Just those two at the bar. Lucky me.',
+            available: false,
+            timeout: 2500,
+            tag: 'after-look-body',
+            trigger: {
+                type: 'HAS TALKED',
+                character: 'TONNY',
             }
         },
         'Ok... See you later.': {
@@ -121,10 +161,20 @@ const dialogs = {
             tag: 'after-look-body',
             trigger: {
                 type: 'HAS TALKED',
-                character: 'MATT',
+                character: 'LORA',
             }
         },
-        'Nice talking to you, Lora...': {
+        'Who was here when you arrived?': {
+            response: 'You really know how to party, Jack...\nNo one.\nUnless you still want to call THAT someone.',
+            available: false,
+            timeout: 4000,
+            tag: 'after-look-body',
+            trigger: {
+                type: 'HAS TALKED',
+                character: 'LORA',
+            }
+        },
+        'Nice talking to you...': {
             response: 'I wish I could say the same.',
             timeout: 2000,
             available: true,
@@ -147,7 +197,17 @@ const dialogs = {
             tag: 'after-look-body',
             trigger: {
                 type: 'HAS TALKED',
-                character: 'MATT',
+                character: 'JOE',
+            }
+        },
+        'For how long have you been here?': {
+            response: 'I came a while ago with Lora.',
+            available: false,
+            timeout: 2500,
+            tag: 'after-look-body',
+            trigger: {
+                type: 'HAS TALKED',
+                character: 'JOE',
             }
         },
         'Thanks, Joe.': {
