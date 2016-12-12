@@ -44,6 +44,14 @@ const dialogs = {
             act: 1,
             interrogate: true
         },
+        'Do you recognize this phone number?': {
+            response: 'I don\'t think so.',
+            available: false,
+            timeout: 2000,
+            tag: 'after-frisk-flynn',
+            act: 1,
+            interrogate: true
+        },
         'Talk to you later.': {
             response: 'Sure',
             timeout: 2000,
@@ -91,7 +99,19 @@ const dialogs = {
             tag: 'after-frisk-flynn',
             trigger: {
                 type: 'HAS TALKED',
-                character: 'MATT',
+                character: 'FLYNN',
+            },
+            act: 1,
+            interrogate: true
+        },
+        'Do you recognize this phone number?': {
+            response: 'Sure, it\'s Lora\'s.',
+            available: false,
+            timeout: 3000,
+            tag: 'after-frisk-flynn',
+            trigger: {
+                type: 'LORA CLUE',
+                character: 'FLYNN',
             },
             act: 1,
             interrogate: true
@@ -148,6 +168,14 @@ const dialogs = {
             act: 1,
             interrogate: true
         },
+        'Do you recognize this phone number?': {
+            response: 'Nope.',
+            available: false,
+            timeout: 2000,
+            tag: 'after-frisk-flynn',
+            act: 1,
+            interrogate: true
+        },
         'Hold in there.': {
             response: 'As you say, Jack.',
             timeout: 2000,
@@ -197,6 +225,14 @@ const dialogs = {
                 type: 'HAS INTERROGATED',
                 character: 'TONNY',
             },
+            act: 1,
+            interrogate: true
+        },
+        'Do you recognize this phone number?': {
+            response: 'No idea, Joe.',
+            available: false,
+            timeout: 2000,
+            tag: 'after-frisk-flynn',
             act: 1,
             interrogate: true
         },
@@ -252,6 +288,14 @@ const dialogs = {
             act: 1,
             interrogate: true
         },
+        'Do you recognize this phone number?': {
+            response: 'Oh, leave me alone!',
+            available: false,
+            timeout: 2000,
+            tag: 'after-frisk-flynn',
+            act: 1,
+            interrogate: true
+        },
         'Nice talking to you...': {
             response: 'I wish I could say the same.',
             timeout: 2000,
@@ -292,7 +336,15 @@ const dialogs = {
             act: 1,
             interrogate: true
         },
-        'Were you borrowing money from Johnny?': {
+        'Do you recognize this phone number?': {
+            response: 'Not really.',
+            available: false,
+            timeout: 2000,
+            tag: 'after-frisk-flynn',
+            act: 1,
+            interrogate: true
+        },
+        'Were you borrowing money from Johnny, Joe?': {
             response: 'He offered! And I was about to pay him back, Jack.',
             available: false,
             timeout: 2500,
