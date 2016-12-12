@@ -53,7 +53,7 @@ const dialogs = {
             interrogate: true
         },
         'Talk to you later.': {
-            response: 'Sure',
+            response: 'Sure.',
             timeout: 2000,
             available: true,
             tag: 'introductory',
@@ -237,8 +237,8 @@ const dialogs = {
             interrogate: true
         },
         'Ok... See you later.': {
-            response: 'Are you planning to spoil my whole evening?',
-            timeout: 2000,
+            response: 'If you say so',
+            timeout: 1500,
             available: true,
             tag: 'introductory',
             trigger: {

@@ -354,10 +354,14 @@ class Game {
                 this.uiDialog.renderable = false;
                 this.uiActions.renderable = true;
                 this.setUpUIEvents();
-                if (this.gameState.hasTalked.length == 6) {
-                    setTimeout(() => {this.setTalkingText('Ok, I think I have talked with everybody, now what?', 5000)}, 4000);
+                if (this.gameState.hasTalked.length == 1) {
+                    setTimeout(() => {
+                        this.setTalkingText('Ok, I think I have talked with everybody, now what?', 4000);
+                        this.renderNewUIActions();
+                        this.sound.stop('song1');
+                        this.sound.play('song2');
+                    }, 3000);
                     this.act = 2;
-                    this.renderNewUIActions();
                 }
                 return;
             case 'LOOK BODY':
