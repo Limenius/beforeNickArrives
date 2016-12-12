@@ -52,6 +52,14 @@ const dialogs = {
             act: 1,
             interrogate: true
         },
+        'Any idea why there was a picture of Lora naked behind the moose?': {
+            response: 'No, but she has a problem now.\nNick told her to stop doing that sort of thing\nor he would move her away from the business.',
+            available: false,
+            timeout: 6000,
+            tag: 'after-frisk-moose',
+            act: 1,
+            interrogate: true
+        },
         'Talk to you later.': {
             response: 'Sure.',
             timeout: 2000,
@@ -116,6 +124,14 @@ const dialogs = {
             act: 1,
             interrogate: true
         },
+        'Do you recognize this picture, Flynn?': {
+            response: 'All but the pearls.',
+            available: false,
+            timeout: 3000,
+            tag: 'after-frisk-moose',
+            act: 1,
+            interrogate: true
+        },
         'Ok, enough for now.': {
             response: 'Ok, buddy',
             timeout: 2000,
@@ -173,6 +189,14 @@ const dialogs = {
             available: false,
             timeout: 2000,
             tag: 'after-frisk-flynn',
+            act: 1,
+            interrogate: true
+        },
+        'Any idea why there was a picture of Lora naked behind the moose?': {
+            response: 'Erg... No.',
+            available: false,
+            timeout: 3000,
+            tag: 'after-frisk-moose',
             act: 1,
             interrogate: true
         },
@@ -236,6 +260,14 @@ const dialogs = {
             act: 1,
             interrogate: true
         },
+        'Any idea why there was a picture of Lora naked behind the moose?': {
+            response: 'Nope. But it doesn\'t sound too surprising to me.',
+            available: false,
+            timeout: 3000,
+            tag: 'after-frisk-moose',
+            act: 1,
+            interrogate: true
+        },
         'Ok... See you later.': {
             response: 'If you say so',
             timeout: 1500,
@@ -296,11 +328,11 @@ const dialogs = {
             act: 1,
             interrogate: true
         },
-        'Ehem... nice pearls in this picture, Lora': {
+        'Ehem... nice pearls in this picture, Lora.': {
             response: 'WHERE DID YOU GET THAT FROM?!',
             available: false,
-            timeout: 2000,
-            tag: 'after-frisk-flynn',
+            timeout: 3000,
+            tag: 'after-frisk-moose',
             act: 1,
             interrogate: true
         },
