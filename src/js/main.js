@@ -18,6 +18,17 @@ WebFont.load({
     }
 });
 
+function rectangle( x, y, width, height, backgroundColor, borderColor, borderWidth ) { 
+    var box = new PIXI.Graphics();
+    box.beginFill(backgroundColor);
+    box.lineStyle(borderWidth , borderColor);
+    box.drawRect(0, 0, width - borderWidth, height - borderWidth);
+    box.endFill();
+    box.position.x = x + borderWidth/2;
+    box.position.y = y + borderWidth/2;
+    return box;
+};
+
 const main = () => {
     var game = new Game();
 }
@@ -122,15 +133,28 @@ class Game {
         this.stage.addChild(this.intro2Text);
         this.renderer.render(this.stage);
 
-        const enterPreload = (evt) => {
+        const enterStart = (evt) => {
             if (evt.keyCode == 32) {
                 if (this.loaded) {
                     this.start();
                 }
-                document.removeEventListener('keydown', enterPreload);
+                document.removeEventListener('keydown', enterStart);
             }
         }
-        document.addEventListener('keydown', enterPreload);
+        const checkLoaded = () => {
+            console.log('check');
+            this.introText2.renderable = true;
+            if (this.loaded) {
+                this.introText2.text = 'Press space to continue'
+                document.addEventListener('keydown', enterStart);
+            } else {
+                this.intoText2.text = 'Loading'
+                setTimeout(checkLoaded, 200);
+            }
+            this.renderer.render(this.stage);
+        }
+
+        setTimeout(checkLoaded, 2000);
     }
 
     renderDialogUI() {
@@ -235,7 +259,22 @@ class Game {
 
         this.setUpUIEvents();
 
+        this.screenFadeContainer = new PIXI.DisplayObjectContainer();
+        this.screenFadeContainer.scale.x = this.screenFadeContainer.scale.y = 1;
+        this.stage.addChild(this.screenFadeContainer);
+        var fullSceenCover = rectangle(0, 0, 1000, 480 + offsetH, 0x000000, 0x000000, 0 );
+        this.screenFadeContainer.addChild(fullSceenCover);
+        this.fadeIn();
+
         //this.animate();
+    }
+
+    fadeIn() {
+        this.screenFadeContainer.alpha = this.screenFadeContainer.alpha - 0.05;
+        if (this.screenFadeContainer.alpha > 0) {
+            setTimeout(this.fadeIn.bind(this), 100);
+        }
+
     }
 
     setUpUIEvents() {
