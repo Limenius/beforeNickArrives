@@ -199,6 +199,7 @@ class Game {
 
     runAction(entity, action) {
         if (action == 'TALK') {
+            this.uiDialog.renderable = true;
             if (dialogs[entity.key]) {
                 return this.runDialog(dialogs[entity.key]);
             }
