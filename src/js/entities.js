@@ -29,7 +29,7 @@ const entities = {
         }
     },
     '#ae289d' : {
-        name: 'telephone',
+        name: 'the telephone',
         actions: {
             LOOK : {
                 text: 'It\'s a phone.',
@@ -83,7 +83,7 @@ const entities = {
         }
     },
     '#493c2b' : {
-        name: 'shelves',
+        name: 'the shelves',
         actions: {
             LOOK : {
                 text: 'Those shelves are full of books.\nI don\'t think any of these guys has ever opened one.',
@@ -92,7 +92,7 @@ const entities = {
         }
     },
     '#ea6112' : {
-        name: 'lamp',
+        name: 'the lamp',
         actions: {
             LOOK : {
                 text: 'It\'s a pretty cool lamp.',
@@ -101,7 +101,7 @@ const entities = {
         }
     },
     '#694fc9' : {
-        name: 'tiny table',
+        name: 'the tiny table',
         actions: {
             LOOK : {
                 text: 'It just holds the phone.',
@@ -122,7 +122,7 @@ const entities = {
         name: 'Lora',
         actions: {
             LOOK : {
-                text: 'That\'s Lys. God put some effort on those cheeckbones.\n I think he cut the budget later\nand forgot to use a the human heart, but oh well.',
+                text: 'God put some effort on those cheeckbones.\n I think he cut the budget later\nand forgot to use a the human heart, but oh well.',
                 timeout: 4000,
             }
         }
@@ -137,7 +137,7 @@ const entities = {
         }
     },
     '#4dd030' : {
-        name: 'big sofa',
+        name: 'the large sofa',
         actions: {
             LOOK : {
                 text: 'If that big sofa could talk...',
@@ -146,7 +146,7 @@ const entities = {
         }
     },
     '#eb8931' : {
-        name: 'clock',
+        name: 'the clock',
         actions: {
             LOOK : {
                 text: 'It is not stopped showing the time of the murder, how disappointing.',
@@ -164,7 +164,7 @@ const entities = {
         }
     },
     '#1b2632' : {
-        name: 'window',
+        name: 'the window',
         actions: {
             LOOK : {
                 text: 'Lovely evening out there...',
@@ -173,7 +173,7 @@ const entities = {
         }
     },
     '#005784' : {
-        name: 'curtains',
+        name: 'the curtains',
         actions: {
             LOOK : {
                 text: 'Those are beautiful curtains.',
@@ -214,6 +214,15 @@ const entities = {
             LOOK : {
                 text: 'That\'s Spencer. A sensible man. He could bet his mother in a poker hand,\nbut we all have our issues...',
                 timeout: 4000,
+            }
+        }
+    },
+    '#b2dcef' : {
+        name: 'the table',
+        actions: {
+            LOOK : {
+                text: 'There are some bottles and glasses.',
+                timeout: 1000,
             }
         }
     },
