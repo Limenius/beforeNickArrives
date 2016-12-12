@@ -73,7 +73,7 @@ class Game {
     renderDialogUI() {
         this.uiDialog = new PIXI.Container();
         this.uiDialog.position.x = 0;
-        this.uiDialog.position.y = 530;
+        this.uiDialog.position.y = 510;
         this.stage.addChild(this.uiDialog);
     }
 
@@ -168,7 +168,7 @@ class Game {
         if (y < 530) {
             return null;
         }
-        const index = Math.floor((y - 530) / 30);
+        const index = Math.floor((y - 510) / 30);
         const line = this.uiState.dialogOptions[index];
         return line;
     }
@@ -199,12 +199,14 @@ class Game {
 
     runAction(entity, action) {
         if (action == 'TALK') {
+            this.uiDialog.renderable = true;
             if (dialogs[entity.key]) {
                 return this.runDialog(dialogs[entity.key]);
             }
         }
         console.log(action);
         if (!entity.actions[action]) {
+            this.setTalkingText("I can\'t do that.", 1500);
             return;
         }
         if (entity.actions[action].trigger) {
@@ -263,7 +265,7 @@ class Game {
         if (x > 333 && x < 666 && y > 510 && y < 550) {
             return 'LOOK';
         }
-        if (x > 666 && x > 1000 && y > 510 && y < 550) {
+        if (x > 666 && x < 1000 && y > 510 && y < 550) {
             return 'TOUCH';
         }
     }
@@ -315,8 +317,8 @@ class Game {
                 if (this.gameState.hasTalked.indexOf(action.character) == -1) {
                     this.gameState.hasTalked.push(action.character);
                 }
-                if (this.gameState.hasTalked.length == 1) {
-                    setTimeout(() => {this.setTalkingText('Ok, I think I have talked with everybody, now what?', 5000)}, 3000);
+                if (this.gameState.hasTalked.length == 2) {
+                    setTimeout(() => {this.setTalkingText('Ok, I think I have talked with everybody, now what?', 6000)}, 3000);
                 }
                 return;
             default:
