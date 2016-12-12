@@ -139,7 +139,7 @@ const dialogs = {
         'What\'s this mess? Nick is going to be mad.': {
             response: 'I guessed you wouldn\'t be happy.\nMaybe I\'m getting better at the guessing thing.',
             available: false,
-            timeout: 2500,
+            timeout: 3500,
             tag: 'after-look-body',
             trigger: {
                 type: 'HAS TALKED',
