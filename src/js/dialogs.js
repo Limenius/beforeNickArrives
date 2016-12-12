@@ -2,7 +2,7 @@ const dialogs = {
     MATT: {
         'Hi there': {
             response: 'Can\'t I just enjoy the party for a while?',
-            available: true,
+            available: false,
             timeout: 2000,
             tag: 'introductory',
             action: {

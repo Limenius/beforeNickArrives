@@ -216,11 +216,17 @@ class Game {
         const keys = Object.keys(dialog);
         const textStyle = {fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeee, 'text-align' : 'left', align: 'left'}
         this.uiState.dialogOptions = [];
-        for (let i = 0; i < keys.length; i++) {
-            var option = new PIXI.Text(keys[i], textStyle);
+
+        const availableKeys = keys.filter((key) => {
+            return dialog[key].available;
+        });
+
+        for (let i = 0; i < availableKeys.length; i++) {
+            const key = availableKeys[i];
+            var option = new PIXI.Text(key, textStyle);
             option.x = 20;
             option.y = i * 30;
-            this.uiState.dialogOptions.push(dialog[keys[i]]);
+            this.uiState.dialogOptions.push(dialog[key]);
             this.uiDialog.addChild(option);
         }
         this.setUpDialogEvents();
