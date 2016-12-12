@@ -157,7 +157,7 @@ class Game {
         var mousePos = this.getMousePos(evt);
         const line = this.getDialogOption(mousePos.x, mousePos.y);
         this.setTalkingText(line.response, line.timeout);
-        this.dispatch(line.action);
+        line.trigger && this.dispatch(line.trigger);
     }
 
     getDialogOption(x, y) {
@@ -198,6 +198,10 @@ class Game {
             if (dialogs[entity.key]) {
                 return this.runDialog(dialogs[entity.key]);
             }
+        }
+        console.log(action);
+        if (entity.actions[action].trigger) {
+            this.dispatch(entity.actions[action].trigger);
         }
         this.setTalkingText(entity.actions[action].text, entity.actions[action].timeout);
     }
@@ -295,8 +299,22 @@ class Game {
                 this.uiActions.renderable = true;
                 this.setUpUIEvents();
                 return;
+            case 'LOOK BODY':
+                console.log('look body');
+                this.makeDialogAvailableByTag('after-look-body');
             default:
                 return;
+        }
+    }
+
+    makeDialogAvailableByTag(tag) {
+        for (var character in dialogs) {
+            for (var line in dialogs[character]) {
+                if (dialogs[character][line].tag && dialogs[character][line].tag == tag) {
+                    dialogs[character][line].available = true;
+
+                }
+            }
         }
     }
 

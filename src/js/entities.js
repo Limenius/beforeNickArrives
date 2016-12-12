@@ -27,7 +27,10 @@ const entities = {
             LOOK : {
                 text: 'He is dead.\nBetter sort this out before Nick arrives.',
                 timeout: 5000,
-            }
+                trigger: {
+                    type: 'LOOK BODY',
+                }
+            },
         }
     },
     '#ae289d' : {
