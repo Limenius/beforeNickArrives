@@ -16,7 +16,7 @@ export default class Sound {
                     }
                 }),
                 song2 : new Howl({
-                    src: ['./dist/music/song2.mp3'],
+                    src: ['./dist/music/song1.mp3'],
                     loop: true,
                     volume: 0.5,
                     onload: function() {
@@ -24,7 +24,7 @@ export default class Sound {
                     }
                 }),
                 song3 : new Howl({
-                    src: ['./dist/music/song1.mp3'],
+                    src: ['./dist/music/song3.mp3'],
                     loop: true,
                     volume: 0.5,
                     onload: function() {
@@ -36,6 +36,10 @@ export default class Sound {
     }
 
     play(soundName) {
-        this.sounds[soundName].play();
+        return this.sounds[soundName].play();
+    }
+
+    stop(soundName, id) {
+        this.sounds[soundName].stop(id);
     }
 }

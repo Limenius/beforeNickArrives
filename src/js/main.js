@@ -18,7 +18,7 @@ WebFont.load({
     }
 });
 
-function rectangle( x, y, width, height, backgroundColor, borderColor, borderWidth ) { 
+function rectangle( x, y, width, height, backgroundColor, borderColor, borderWidth ) {
     var box = new PIXI.Graphics();
     box.beginFill(backgroundColor);
     box.lineStyle(borderWidth , borderColor);
@@ -247,7 +247,9 @@ class Game {
     }
 
     start() {
-        this.sound.play('song1');
+        this.introText2.renderable = false;
+
+        this.songId = this.sound.play('song1');
         this.stage.addChild(this.background);
         this.stage.addChild(this.statusText);
         this.stage.addChild(this.talkingText);
@@ -259,7 +261,7 @@ class Game {
 
         this.setUpUIEvents();
 
-        this.screenFadeContainer = new PIXI.DisplayObjectContainer();
+        this.screenFadeContainer = new PIXI.Container();
         this.screenFadeContainer.scale.x = this.screenFadeContainer.scale.y = 1;
         this.stage.addChild(this.screenFadeContainer);
         var fullSceenCover = rectangle(0, 0, 1000, 480 + offsetH, 0x000000, 0x000000, 0 );
@@ -333,8 +335,8 @@ class Game {
 
     runAction(entity, action) {
         if (action == 'TALK' || action == 'INTERROGATE') {
-            this.uiDialog.renderable = true;
             if (dialogs[entity.key]) {
+                this.uiDialog.renderable = true;
                 return this.runDialog(dialogs[entity.key]);
             }
         }
@@ -465,8 +467,7 @@ class Game {
                     setTimeout(() => {
                         this.setTalkingText('Ok, I think I have talked to everybody, now what?', 4000);
                         this.renderNewUIActions();
-                        console.log(this.songId);
-                        this.sound.pause(this.songId);
+                        this.sound.stop('song1', this.songId);
                         this.songId = this.sound.play('song2');
                     }, 3000);
                     this.act = 2;
