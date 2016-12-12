@@ -32,7 +32,7 @@ const entities = {
                 timeout: 2000,
             },
             FRISK : {
-                text: 'Oh, something fall from behind...\nIt\'s a picture of Lora wearing a pearl collar...\nActually, wearing ONLY a pearl collar.',
+                text: 'Oh, something fell from behind...\nIt\'s a picture of Lora wearing a pearl collar...\nActually, wearing ONLY a pearl collar.',
                 timeout: 7000,
             }
         }
@@ -60,8 +60,11 @@ const entities = {
                 timeout: 2000,
             },
             FRISK : {
-                text: 'Ok... A threatening note with Matt\'s writing,\na check, a pack of cigarettes,\nand a handwritten phone number that sounds familiar.',
+                text: 'Ok... A threatening note with Matt\'s writing,\na promisory note from Joe, a pack of cigarettes,\nand a handwritten phone number that sounds familiar.',
                 timeout: 7000,
+                trigger: {
+                    type: 'FRISK BODY',
+                }
             },
             INTERROGATE : {
                 text: 'It seems impolite.',
@@ -74,7 +77,7 @@ const entities = {
         actions: {
             LOOK : {
                 text: 'It\'s a phone.',
-                timeout: 1000,
+                timeout: 1500,
             },
             TOUCH : {
                 text: 'There is no one I can call to fix this.\nI need to do it myself. Better to hurry.',
@@ -95,7 +98,7 @@ const entities = {
         actions: {
             LOOK : {
                 text: 'Jose Cuervo Special Gold.',
-                timeout: 1000,
+                timeout: 1500,
             },
             TOUCH : {
                 text: 'I don\'t think is the right time for that...',
@@ -112,7 +115,7 @@ const entities = {
         actions: {
             LOOK : {
                 text: 'It\'s a woman coat.',
-                timeout: 1000,
+                timeout: 1500,
             },
             TOUCH : {
                 text: 'It is not mine.',
@@ -129,7 +132,7 @@ const entities = {
         actions: {
             LOOK : {
                 text: 'It\'s a coat.',
-                timeout: 1000,
+                timeout: 1500,
             },
             TOUCH : {
                 text: 'It is not mine.',
@@ -164,7 +167,7 @@ const entities = {
         actions: {
             LOOK : {
                 text: 'That\'s Ronnie. A nice guy, not our brigthest bulb.',
-                timeout: 1000,
+                timeout: 2300,
             },
             TOUCH : {
                 text: 'No, thanks, I\'m gonna keep my hands here.',
@@ -219,7 +222,7 @@ const entities = {
         actions: {
             LOOK : {
                 text: 'It just holds the phone.',
-                timeout: 1000,
+                timeout: 1500,
             },
             TOUCH : {
                 text: 'It is ok there.',
@@ -237,11 +240,11 @@ const entities = {
         actions: {
             LOOK : {
                 text: 'He is Joe. He\'s always broke,\nbut he knows how to shake a Martini.',
-                timeout: 1000,
+                timeout: 2500,
             },
             TOUCH : {
                 text: 'No, thanks, I\'m gonna keep my hands here.',
-                timeout: 1000,
+                timeout: 2000,
             },
             INSPECT : {
                 text: 'He seems happy.\nI thought he was fond of the new guy.',
@@ -263,7 +266,7 @@ const entities = {
             },
             TOUCH : {
                 text: 'Not my type.',
-                timeout: 1000,
+                timeout: 1500,
             },
             INSPECT : {
                 text: 'She looks as she as doesn\'t give a shit.\nShe may sound even more irritated that usually...\nHard to say.',
@@ -280,11 +283,11 @@ const entities = {
         actions: {
             LOOK : {
                 text: 'I could really use a drink.',
-                timeout: 1000,
+                timeout: 2000,
             },
             TOUCH : {
                 text: 'I need to focus in solving this mess.',
-                timeout: 1000,
+                timeout: 2500,
             },
             INSPECT : {
                 text: 'There are only some bottles there.',
@@ -297,7 +300,7 @@ const entities = {
         actions: {
             LOOK : {
                 text: 'If that big sofa could talk...',
-                timeout: 1000,
+                timeout: 2000,
             },
             TOUCH : {
                 text: 'I wish a could just sit down and forget about all this.',
@@ -318,7 +321,7 @@ const entities = {
             },
             TOUCH : {
                 text: 'It is very old, better not to touch it.',
-                timeout: 1000,
+                timeout: 2000,
             },
             INSPECT : {
                 text: 'I don\'t see anything remarkable there.',

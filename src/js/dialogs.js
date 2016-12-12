@@ -29,6 +29,14 @@ const dialogs = {
             available: false,
             timeout: 2500,
             tag: 'after-look-body',
+            act: 1,
+            interrogate: true
+        },
+        'Why does Jhonny have a threatening note with your handwriting in his pocket, Matt?': {
+            response: 'Mmm... He caught me gambling again and suggested\nthat he could tell Nick.\nI explained to him that we don\'t like rats.',
+            available: false,
+            timeout: 3500,
+            tag: 'after-frisk-body',
             trigger: {
                 type: 'HAS TALKED',
                 character: 'MATT',
@@ -36,7 +44,15 @@ const dialogs = {
             act: 1,
             interrogate: true
         },
-        'Talk to you later': {
+        'Do you recognize this phone number?': {
+            response: 'I don\'t think so.',
+            available: false,
+            timeout: 2000,
+            tag: 'after-frisk-flynn',
+            act: 1,
+            interrogate: true
+        },
+        'Talk to you later.': {
             response: 'Sure',
             timeout: 2000,
             available: true,
@@ -73,8 +89,28 @@ const dialogs = {
             available: false,
             timeout: 2500,
             tag: 'after-look-body',
+            act: 1,
+            interrogate: true
+        },
+        'Why are you still carrying a picture of Lora?': {
+            response: 'For an artist, there is nothing\nlike digging into his own misery.',
+            available: false,
+            timeout: 4000,
+            tag: 'after-frisk-flynn',
             trigger: {
                 type: 'HAS TALKED',
+                character: 'FLYNN',
+            },
+            act: 1,
+            interrogate: true
+        },
+        'Do you recognize this phone number?': {
+            response: 'Sure, it\'s Lora\'s.',
+            available: false,
+            timeout: 3000,
+            tag: 'after-frisk-flynn',
+            trigger: {
+                type: 'LORA CLUE',
                 character: 'FLYNN',
             },
             act: 1,
@@ -107,20 +143,36 @@ const dialogs = {
             tag: 'after-look-body',
             trigger: {
                 type: 'HAS TALKED',
-                character: 'MATT',
+                character: 'RONNIE',
             },
             act: 1,
             interrogate: false
         },
         'Why are you at the door?': {
-            response: 'I just arrived. I thought\nyou would like me to watch the door.',
+            response: 'I thought\nyou would like me to watch the door.',
             available: false,
             timeout: 2500,
             tag: 'after-look-body',
+            act: 1,
+            interrogate: true
+        },
+        'A fast diet book...?': {
+            response: 'I\'m considering losing some weight. Just a couple kilos, you know...',
+            available: false,
+            timeout: 2500,
+            tag: 'after-frisk-ronnie',
             trigger: {
-                type: 'HAS TALKED',
-                character: 'FLYNN',
+                type: 'HAS INTERROGATED',
+                character: 'RONNIE',
             },
+            act: 1,
+            interrogate: true
+        },
+        'Do you recognize this phone number?': {
+            response: 'Nope.',
+            available: false,
+            timeout: 2000,
+            tag: 'after-frisk-flynn',
             act: 1,
             interrogate: true
         },
@@ -161,10 +213,26 @@ const dialogs = {
             available: false,
             timeout: 2500,
             tag: 'after-look-body',
+            act: 1,
+            interrogate: true
+        },
+        'Johnny has a pack of cigarettes in his pocket. Same brand you have.': {
+            response: 'And that proves...?',
+            available: false,
+            timeout: 4000,
+            tag: 'after-frisk-body',
             trigger: {
-                type: 'HAS TALKED',
+                type: 'HAS INTERROGATED',
                 character: 'TONNY',
             },
+            act: 1,
+            interrogate: true
+        },
+        'Do you recognize this phone number?': {
+            response: 'No idea, Joe.',
+            available: false,
+            timeout: 2000,
+            tag: 'after-frisk-flynn',
             act: 1,
             interrogate: true
         },
@@ -205,10 +273,26 @@ const dialogs = {
             available: false,
             timeout: 4000,
             tag: 'after-look-body',
+            act: 1,
+            interrogate: true
+        },
+        'Who do you think did this?': {
+            response: 'You know that I don\'t like to talk, Jack, but many in this room wanted him dead.',
+            available: false,
+            timeout: 2500,
+            tag: 'after-frisk-body',
             trigger: {
-                type: 'HAS TALKED',
+                type: 'HAS INTERROGATED',
                 character: 'LORA',
             },
+            act: 1,
+            interrogate: true
+        },
+        'Do you recognize this phone number?': {
+            response: 'Oh, leave me alone!',
+            available: false,
+            timeout: 2000,
+            tag: 'after-frisk-flynn',
             act: 1,
             interrogate: true
         },
@@ -249,8 +333,24 @@ const dialogs = {
             available: false,
             timeout: 2500,
             tag: 'after-look-body',
+            act: 1,
+            interrogate: true
+        },
+        'Do you recognize this phone number?': {
+            response: 'Not really.',
+            available: false,
+            timeout: 2000,
+            tag: 'after-frisk-flynn',
+            act: 1,
+            interrogate: true
+        },
+        'Were you borrowing money from Johnny, Joe?': {
+            response: 'He offered! And I was about to pay him back, Jack.',
+            available: false,
+            timeout: 2500,
+            tag: 'after-look-body',
             trigger: {
-                type: 'HAS TALKED',
+                type: 'HAS INTERROGATED',
                 character: 'JOE',
             },
             act: 1,
