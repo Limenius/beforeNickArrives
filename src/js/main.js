@@ -359,6 +359,15 @@ class Game {
             case 'LOOK BODY':
                 this.makeDialogAvailableByTag('after-look-body');
                 return;
+            case 'FRISK BODY':
+                this.makeDialogAvailableByTag('after-frisk-body');
+                return;
+            case 'FRISK RONNIE':
+                this.makeDialogAvailableByTag('after-frisk-ronnie');
+                return;
+            case 'FRISK FLYNN':
+                this.makeDialogAvailableByTag('after-frisk-flynn');
+                return;
             case 'HAS TALKED':
                 if (this.gameState.hasTalked.indexOf(action.character) == -1) {
                     this.gameState.hasTalked.push(action.character);

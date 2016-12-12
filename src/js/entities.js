@@ -32,7 +32,7 @@ const entities = {
                 timeout: 2000,
             },
             FRISK : {
-                text: 'Oh, something fall from behind...\nIt\'s a picture of Lora wearing a pearl collar...\nActually, wearing ONLY a pearl collar.',
+                text: 'Oh, something fell from behind...\nIt\'s a picture of Lora wearing a pearl collar...\nActually, wearing ONLY a pearl collar.',
                 timeout: 7000,
             }
         }
@@ -60,8 +60,11 @@ const entities = {
                 timeout: 2000,
             },
             FRISK : {
-                text: 'Ok... A threatening note with Matt\'s writing,\na check, a pack of cigarettes,\nand a handwritten phone number that sounds familiar.',
+                text: 'Ok... A threatening note with Matt\'s writing,\na promisory note from Joe, a pack of cigarettes,\nand a handwritten phone number that sounds familiar.',
                 timeout: 7000,
+                trigger: {
+                    type: 'FRISK BODY',
+                }
             },
             INTERROGATE : {
                 text: 'It seems impolite.',
