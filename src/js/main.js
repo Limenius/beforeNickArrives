@@ -103,6 +103,28 @@ class Game {
         this.stage.addChild(this.uiActions);
     }
 
+    renderNewUIActions() {
+        this.action4Text = new PIXI.Text('Interrogate',{fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
+        this.action4Text.anchor.set(0.5, 0.5);
+        this.action4Text.x = 166;
+        this.action4Text.y = 30;
+
+        this.action5Text = new PIXI.Text('Inspect',{fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeff, 'text-align' : 'center', align: 'center'});
+        this.action5Text.anchor.set(0.5, 0.5);
+        this.action5Text.x = 500;
+        this.action5Text.y = 30;
+
+        this.action6Text = new PIXI.Text('Frisk',{fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
+        this.action6Text.anchor.set(0.5, 0.5);
+        this.action6Text.x = 833;
+        this.action6Text.y = 30;
+
+        this.uiActions.addChild(this.action4Text);
+        this.uiActions.addChild(this.action5Text);
+        this.uiActions.addChild(this.action6Text);
+        this.stage.addChild(this.uiActions);
+    }
+
     loadGraphics() {
         return new Promise( (resolve, reject) => {
             PIXI.loader
@@ -125,6 +147,7 @@ class Game {
         this.stage.addChild(this.statusText);
         this.stage.addChild(this.talkingText);
         this.renderUI();
+        this.renderNewUIActions();
         this.renderDialogUI();
         this.renderer.render(this.stage);
 
@@ -259,14 +282,36 @@ class Game {
     }
 
     getVerb(x, y) {
-        if (x > 0 && x < 333 && y > 510 && y < 550) {
-            return 'TALK';
-        }
-        if (x > 333 && x < 666 && y > 510 && y < 550) {
-            return 'LOOK';
-        }
-        if (x > 666 && x < 1000 && y > 510 && y < 550) {
-            return 'TOUCH';
+        var act = 2;
+        if (act == 1) {
+            if (x > 0 && x < 333 && y > 510 && y < 540) {
+                return 'TALK';
+            }
+            if (x > 333 && x < 666 && y > 510 && y < 540) {
+                return 'LOOK';
+            }
+            if (x > 666 && x < 1000 && y > 510 && y < 540) {
+                return 'TOUCH';
+            }
+        } else {
+            if (x > 0 && x < 333 && y > 510 && y < 540) {
+                return 'TALK';
+            }
+            if (x > 333 && x < 666 && y > 510 && y < 540) {
+                return 'LOOK';
+            }
+            if (x > 666 && x < 1000 && y > 510 && y < 540) {
+                return 'TOUCH';
+            }
+            if (x > 0 && x < 333 && y > 540 && y < 570) {
+                return 'INTERROGATE';
+            }
+            if (x > 333 && x < 666 && y > 540 && y < 570) {
+                return 'INSPECT';
+            }
+            if (x > 666 && x < 1000 && y > 540 && y < 570) {
+                return 'FRISK';
+            }
         }
     }
 
