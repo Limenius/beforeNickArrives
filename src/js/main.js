@@ -60,6 +60,7 @@ class Game {
 
         this.gameState = {
             dialogs: dialogs,
+            hasTalked: [],
         }
 
         Promise.all( [this.loadGraphics()] )
@@ -156,6 +157,9 @@ class Game {
     clickDialog(evt) {
         var mousePos = this.getMousePos(evt);
         const line = this.getDialogOption(mousePos.x, mousePos.y);
+        if (!line) {
+            return;
+        }
         this.setTalkingText(line.response, line.timeout);
         line.trigger && this.dispatch(line.trigger);
     }
@@ -200,6 +204,9 @@ class Game {
             }
         }
         console.log(action);
+        if (!entity.actions[action]) {
+            return;
+        }
         if (entity.actions[action].trigger) {
             this.dispatch(entity.actions[action].trigger);
         }
@@ -293,6 +300,7 @@ class Game {
     }
 
     dispatch(action) {
+        console.log(action);
         switch (action.type) {
             case 'END DIALOG':
                 this.uiDialog.renderable = false;
@@ -302,6 +310,15 @@ class Game {
             case 'LOOK BODY':
                 console.log('look body');
                 this.makeDialogAvailableByTag('after-look-body');
+                return;
+            case 'HAS TALKED':
+                if (this.gameState.hasTalked.indexOf(action.character) == -1) {
+                    this.gameState.hasTalked.push(action.character);
+                }
+                if (this.gameState.hasTalked.length == 1) {
+                    setTimeout(() => {this.setTalkingText('Ok, I think I have talked with everybody, now what?', 5000)}, 3000);
+                }
+                return;
             default:
                 return;
         }

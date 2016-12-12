@@ -10,7 +10,7 @@ const dialogs = {
             //    state.hasTalked.push('MATT');
             //    {...state, hasTalked} }
         },
-        'Have you even notice that Johnny is dead on the floor?': {
+        'Have you even noticed that Johnny is dead on the floor?': {
             response: 'Oh really?\nWell, so what?',
             available: false,
             timeout: 2000,
