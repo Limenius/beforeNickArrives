@@ -157,7 +157,7 @@ const dialogs = {
             interrogate: true
         },
         'A fast diet book...?': {
-            response: 'I\'m considering losing some weight. Just a couple kilos, you know...',
+            response: 'I\'m considering losing some weight. For the beach, you know...',
             available: false,
             timeout: 2500,
             tag: 'after-frisk-ronnie',

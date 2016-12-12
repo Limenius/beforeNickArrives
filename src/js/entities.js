@@ -261,7 +261,7 @@ const entities = {
         name: 'Lora',
         actions: {
             LOOK : {
-                text: 'God put some effort on those cheeckbones.\n I think he cut the budget later\nand forgot to use a the human heart, but oh well.',
+                text: 'God put some effort on those cheeckbones.\n I think he cut the budget later\nand forgot to put a human heart, but oh well.',
                 timeout: 4000,
             },
             TOUCH : {
@@ -269,7 +269,7 @@ const entities = {
                 timeout: 1500,
             },
             INSPECT : {
-                text: 'She looks as she as doesn\'t give a shit.\nShe may sound even more irritated that usually...\nHard to say.',
+                text: 'She looks as she as doesn\'t give a damn.\nShe may sound even more irritated that usually...\nHard to say.',
                 timeout: 4000,
             },
             FRISK : {
@@ -376,7 +376,7 @@ const entities = {
                 timeout: 3500,
             },
             TOUCH : {
-                text: 'No way, I\'m allergic to the dust.',
+                text: 'No way, I\'m allergic to dust.',
                 timeout: 2000,
             },
             INSPECT : {
