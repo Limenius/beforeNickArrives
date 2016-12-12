@@ -27,6 +27,14 @@ const entities = {
                 text: 'I have mixed feelings about this.',
                 timeout: 1500,
             },
+            INSPECT : {
+                text: 'The longer I stare at that thing, the sicker I feel.',
+                timeout: 2000,
+            },
+            FRISK : {
+                text: 'Oh, something fall from behind...\nIt\'s a picture of Lora wearing a pearl collar...\nActually, wearing ONLY a pearl collar.',
+                timeout: 7000,
+            }
         }
     },
     '#00ff00' : {
@@ -53,7 +61,7 @@ const entities = {
             },
             FRISK : {
                 text: 'Ok... A threatening note with Matt\'s writing,\na check, a pack of cigarettes,\nand a handwritten phone number that sounds familiar.',
-                timeout: 5000,
+                timeout: 7000,
             },
             INTERROGATE : {
                 text: 'It seems impolite.',
@@ -76,6 +84,10 @@ const entities = {
                 text: 'It is not ringing.',
                 timeout: 2000,
             },
+            INSPECT : {
+                text: 'I don\'t see anything remarkable there.',
+                timeout: 2000,
+            },
         }
     },
     '#2fb068' : {
@@ -88,20 +100,28 @@ const entities = {
             TOUCH : {
                 text: 'I don\'t think is the right time for that...',
                 timeout: 1500,
-            }
+            },
+            INSPECT : {
+                text: 'I don\'t see anything remarkable there.',
+                timeout: 2000,
+            },
         }
     },
     '#b32633' : {
-        name: 'coat',
+        name: 'woman coat',
         actions: {
             LOOK : {
-                text: 'It\'s a coat.',
+                text: 'It\'s a woman coat.',
                 timeout: 1000,
             },
             TOUCH : {
                 text: 'It is not mine.',
                 timeout: 1500,
-            }
+            },
+            INSPECT : {
+                text: 'It must be Lora\'s coat. There is nothing in the pockets.',
+                timeout: 2000,
+            },
         }
     },
     '#9d9d9d' : {
@@ -114,7 +134,11 @@ const entities = {
             TOUCH : {
                 text: 'It is not mine.',
                 timeout: 1500,
-            }
+            },
+            INSPECT : {
+                text: 'I don\'t know from whom is it. There is a pearl collar in one of the pockets.',
+                timeout: 4000,
+            },
         }
     },
     '#a46422' : {
@@ -127,6 +151,10 @@ const entities = {
             TOUCH : {
                 text: 'I have no time for a walk.\nI need to figure out what happened here.',
                 timeout: 1500,
+            },
+            INSPECT : {
+                text: 'I don\'t see anything remarkable there.\nBut Nick is about to show up.',
+                timeout: 2000,
             },
         }
     },
@@ -162,7 +190,11 @@ const entities = {
             TOUCH : {
                 text: 'Maybe in my next life.',
                 timeout: 1500,
-            }
+            },
+            INSPECT : {
+                text: 'That would take ages...\nLet\'s just hope there are no clues hidden there.',
+                timeout: 4000,
+            },
         }
     },
     '#ea6112' : {
@@ -175,11 +207,15 @@ const entities = {
             TOUCH : {
                 text: 'I leart some years ago that there it is no need\nto touch something only because it shines.',
                 timeout: 4000,
-            }
+            },
+            INSPECT : {
+                text: 'I don\'t see anything remarkable there.',
+                timeout: 2000,
+            },
         }
     },
     '#694fc9' : {
-        name: 'the tiny table',
+        name: 'tiny table',
         actions: {
             LOOK : {
                 text: 'It just holds the phone.',
@@ -188,7 +224,11 @@ const entities = {
             TOUCH : {
                 text: 'It is ok there.',
                 timeout: 1500,
-            }
+            },
+            INSPECT : {
+                text: 'I don\'t see anything remarkable there.',
+                timeout: 2000,
+            },
         }
     },
     '#a3ce27' : {
@@ -245,7 +285,11 @@ const entities = {
             TOUCH : {
                 text: 'I need to focus in solving this mess.',
                 timeout: 1000,
-            }
+            },
+            INSPECT : {
+                text: 'There are only some bottles there.',
+                timeout: 2000,
+            },
         }
     },
     '#4dd030' : {
@@ -258,7 +302,11 @@ const entities = {
             TOUCH : {
                 text: 'I wish a could just sit down and forget about all this.',
                 timeout: 3000,
-            }
+            },
+            INSPECT : {
+                text: 'I don\'t see anything remarkable there.',
+                timeout: 2000,
+            },
         }
     },
     '#eb8931' : {
@@ -271,7 +319,11 @@ const entities = {
             TOUCH : {
                 text: 'It is very old, better not to touch it.',
                 timeout: 1000,
-            }
+            },
+            INSPECT : {
+                text: 'I don\'t see anything remarkable there.',
+                timeout: 2000,
+            },
         }
     },
     '#f7e26b' : {
@@ -306,7 +358,11 @@ const entities = {
             TOUCH : {
                 text: 'Let\'s leave it opened. The air is quite dense in here.',
                 timeout: 3000,
-            }
+            },
+            INSPECT : {
+                text: 'It is already quite dark. I can\'t see anything.',
+                timeout: 2000,
+            },
         }
     },
     '#005784' : {
@@ -319,7 +375,11 @@ const entities = {
             TOUCH : {
                 text: 'No way, I\'m allergic to the dust.',
                 timeout: 2000,
-            }
+            },
+            INSPECT : {
+                text: 'Nothing hidden, only dust.\nI will be sneezing for the next couple of hours.',
+                timeout: 2000,
+            },
         }
     },
     '#31a2f2' : {
@@ -332,6 +392,10 @@ const entities = {
             TOUCH : {
                 text: 'Nice quality wood...',
                 timeout: 2000,
+            },
+            INSPECT : {
+                text: 'There is a camera inside one of the drawers.',
+                timeout: 3000,
             }
         }
     },
@@ -344,6 +408,10 @@ const entities = {
             },
             TOUCH : {
                 text: 'It is not the right time for that.',
+                timeout: 2000,
+            },
+            INSPECT : {
+                text: 'It has some lipstick on it.',
                 timeout: 2000,
             },
         }
@@ -361,7 +429,7 @@ const entities = {
                 timeout: 2000,
             },
             INSPECT : {
-                text: 'He looks very concentrated in his guitar.',
+                text: 'He looks very concentrated on his guitar.',
                 timeout: 3000,
             },
             FRISK : {
@@ -401,6 +469,10 @@ const entities = {
             },
             TOUCH : {
                 text: 'Argh, it is sticky.',
+                timeout: 2000,
+            },
+            INSPECT : {
+                text: 'I wonder who has been drinking wine.',
                 timeout: 2000,
             },
         }
