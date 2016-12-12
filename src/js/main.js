@@ -4,6 +4,7 @@ require('../css/style.css');
 import entities from './entities';
 import actions from './actions';
 import dialogs from './dialogs';
+import Sound from './sound.js';
 
 WebFont.load({
     google: {
@@ -64,8 +65,10 @@ class Game {
             hasTalked: [],
         }
 
-        Promise.all( [this.loadGraphics()] )
-        .then( ([{loader, resources}]) => {
+        this.sound = new Sound();
+
+        Promise.all( [this.loadGraphics(), this.sound.load()] )
+        .then( ([{loader, resources}, soundResolution]) => {
             this.onLoad(loader, resources)
         });
 
@@ -138,6 +141,7 @@ class Game {
     }
 
     onLoad(loader, resources) {
+        this.sound.play('song1');
         var bgTexture = new PIXI.Texture(resources.bg.texture, new PIXI.Rectangle(0, 0, 1000, 480));
         var background = new PIXI.Sprite(bgTexture);
         background.anchor.x = 0;

@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "file-loader": "^0.9.0",
-    "howler": "^1.1.28",
+    "howler": "^2.0.2",
     "lodash": "^4.16.6",
     "pixi.js": "^4.2.3",
     "url-loader": "^0.5.7"

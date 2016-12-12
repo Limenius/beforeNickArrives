@@ -36,6 +36,7 @@ var config = {
     plugins: [
         new CopyWebpackPlugin([
             { from: './src/img', to: './img' },
+            { from: './src/music', to: './music' },
         ]),
     ]
 };
