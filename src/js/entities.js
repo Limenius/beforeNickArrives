@@ -13,7 +13,7 @@ const entities = {
         }
     },
     '#ff0000' : {
-        name: 'elk head',
+        name: 'moose head',
         actions: {
             LOOK : {
                 text: 'Its face reminds me of a past relationship. \nI don\'t really want to talk about it.',
@@ -157,7 +157,7 @@ const entities = {
             },
             INSPECT : {
                 text: 'I don\'t see anything remarkable there.\nBut Nick is about to show up.',
-                timeout: 2000,
+                timeout: 3000,
             },
         }
     },
@@ -184,7 +184,7 @@ const entities = {
         }
     },
     '#493c2b' : {
-        name: 'the shelves',
+        name: 'shelves with books',
         actions: {
             LOOK : {
                 text: 'I think I haven\'t read any of these books.',
@@ -261,7 +261,7 @@ const entities = {
         name: 'Lora',
         actions: {
             LOOK : {
-                text: 'God put some effort on those cheeckbones.\n I think he cut the budget later\nand forgot to put a human heart, but oh well.',
+                text: 'God put some effort into those cheeckbones.\n I think he cut the budget later\nand forgot to put a human heart, but oh well.',
                 timeout: 4000,
             },
             TOUCH : {
@@ -402,7 +402,7 @@ const entities = {
             }
         }
     },
-    '#2f8cb0' : {
+    '#aa2f7b' : {
         name: 'wineglass',
         actions: {
             LOOK : {
@@ -410,11 +410,147 @@ const entities = {
                 timeout: 2000,
             },
             TOUCH : {
-                text: 'It is not the right time for that.',
+                text: 'Someone already finished it.',
+                timeout: 2000,
+            },
+            INSPECT : {
+                text: 'I wonder who has been drinking wine.',
+                timeout: 2000,
+            },
+        }
+    },
+    '#dcdf80' : {
+        name: 'wineglass',
+        actions: {
+            LOOK : {
+                text: 'There is still some wine on it.',
+                timeout: 2000,
+            },
+            TOUCH : {
+                text: 'Someone already finished it.',
                 timeout: 2000,
             },
             INSPECT : {
                 text: 'It has some lipstick on it.',
+                timeout: 2000,
+            },
+        }
+    },
+    '#d05b43' : {
+        name: 'glass with tequila',
+        actions: {
+            LOOK : {
+                text: 'It is a glass full of tequila.',
+                timeout: 2000,
+            },
+            TOUCH : {
+                text: 'It is not the right time for that.',
+                timeout: 2000,
+            },
+            INSPECT : {
+                text: 'I don\'t see anything remarkable there.',
+                timeout: 2000,
+            },
+        }
+    },
+    '#369d9e' : {
+        name: 'glass with tequila',
+        actions: {
+            LOOK : {
+                text: 'It is a glass full of tequila.',
+                timeout: 2000,
+            },
+            TOUCH : {
+                text: 'Flynn is drinking it.',
+                timeout: 2000,
+            },
+            INSPECT : {
+                text: 'I don\'t see anything remarkable there.',
+                timeout: 2000,
+            },
+        }
+    },
+    '#2173a0' : {
+        name: 'blood',
+        actions: {
+            LOOK : {
+                text: 'That seems to be Johnny\'s blood.',
+                timeout: 2000,
+            },
+            TOUCH : {
+                text: 'I better not.',
+                timeout: 2000,
+            },
+            INSPECT : {
+                text: 'It makes a beatiful contrast with the carpet.',
+                timeout: 2000,
+            },
+        }
+    },
+    '#fae661' : {
+        name: 'Scotch',
+        actions: {
+            LOOK : {
+                text: 'That looks like some good single malt Scotch.',
+                timeout: 3000,
+            },
+            TOUCH : {
+                text: 'I need to solve this mess first.',
+                timeout: 3000,
+            },
+            INSPECT : {
+                text: 'I don\'t see anything remarkable there.',
+                timeout: 2000,
+            },
+        }
+    },
+    '#379d89' : {
+        name: 'glass with Scotch',
+        actions: {
+            LOOK : {
+                text: 'That\'s Joe\'s glass.',
+                timeout: 2000,
+            },
+            TOUCH : {
+                text: 'Joe is already drinking it.',
+                timeout: 2000,
+            },
+            INSPECT : {
+                text: 'I don\'t see anything remarkable there.',
+                timeout: 2000,
+            },
+        }
+    },
+    '#2448c5' : {
+        name: 'shelves with bottles',
+        actions: {
+            LOOK : {
+                text: 'They have some good stuff there.',
+                timeout: 2000,
+            },
+            TOUCH : {
+                text: 'I need to solve this mess first.',
+                timeout: 2000,
+            },
+            INSPECT : {
+                text: 'I wish.',
+                timeout: 2000,
+            },
+        }
+    },
+    '#762450' : {
+        name: 'painting',
+        actions: {
+            LOOK : {
+                text: 'It is a painting with some dogs playing poker.\nI\'m not an expert in art, but I don\'t see the point',
+                timeout: 4000,
+            },
+            TOUCH : {
+                text: 'It is not the right time for that.',
+                timeout: 2000,
+            },
+            INSPECT : {
+                text: 'Yeap, six dogs playing poker.',
                 timeout: 2000,
             },
         }
