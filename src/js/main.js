@@ -263,7 +263,7 @@ class Game {
         if (x > 333 && x < 666 && y > 510 && y < 550) {
             return 'LOOK';
         }
-        if (x > 666 && x > 1000 && y > 510 && y < 550) {
+        if (x > 666 && x < 1000 && y > 510 && y < 550) {
             return 'TOUCH';
         }
     }
@@ -315,8 +315,8 @@ class Game {
                 if (this.gameState.hasTalked.indexOf(action.character) == -1) {
                     this.gameState.hasTalked.push(action.character);
                 }
-                if (this.gameState.hasTalked.length == 1) {
-                    setTimeout(() => {this.setTalkingText('Ok, I think I have talked with everybody, now what?', 5000)}, 3000);
+                if (this.gameState.hasTalked.length == 2) {
+                    setTimeout(() => {this.setTalkingText('Ok, I think I have talked with everybody, now what?', 6000)}, 3000);
                 }
                 return;
             default:

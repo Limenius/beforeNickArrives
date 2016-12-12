@@ -31,6 +31,10 @@ const entities = {
                     type: 'LOOK BODY',
                 }
             },
+            TOUCH : {
+                text: 'It is cold.',
+                timeout: 1500,
+            },
         }
     },
     '#ae289d' : {
@@ -39,6 +43,10 @@ const entities = {
             LOOK : {
                 text: 'It\'s a phone.',
                 timeout: 1000,
+            },
+            TOUCH : {
+                text: 'There is no one I can call to fix this.\nI need to do it myself. Better to hurry.',
+                timeout: 3000,
             }
         }
     },
@@ -79,6 +87,7 @@ const entities = {
         }
     },
     '#ffffff' : {
+        key: 'RONNIE',
         name: 'Ronnie',
         actions: {
             LOOK : {
@@ -115,15 +124,17 @@ const entities = {
         }
     },
     '#a3ce27' : {
+        key: 'JOE',
         name: 'Joe',
         actions: {
             LOOK : {
-                text: 'He is Joe. He\'s always broke, but he knows how to shake a Martini.',
+                text: 'He is Joe. He\'s always broke,\nbut he knows how to shake a Martini.',
                 timeout: 1000,
             }
         }
     },
     '#44891a' : {
+        key: 'LORA',
         name: 'Lora',
         actions: {
             LOOK : {
@@ -160,12 +171,17 @@ const entities = {
         }
     },
     '#f7e26b' : {
-        name: 'Jack',
+        key: 'TONNY',
+        name: 'Tonny',
         actions: {
             LOOK : {
-                text: 'Tough guy, our Jack. Never try to steal a cigarette from him.',
-                timeout: 1000,
-            }
+                text: 'He is what we call an asset.\nSome may choose the word sociopath instead.',
+                timeout: 3000,
+            },
+            TOUCH : {
+                text: 'No, thanks. Life is hard, but I\'d rather stay around a bit more.',
+                timeout: 2500,
+            },
         }
     },
     '#1b2632' : {
@@ -205,11 +221,12 @@ const entities = {
         }
     },
     '#2f484e' : {
+        key: 'FLYNN',
         name: 'Flynn',
         actions: {
             LOOK : {
-                text: 'It is said that everyone has a gift. Flynn\'s is not playing the guitar',
-                timeout: 1500,
+                text: 'It is said that everyone has a gift.\nWe haven\'t found his yet.',
+                timeout: 3000,
             }
         }
     },
