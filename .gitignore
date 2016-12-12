@@ -1,2 +1,6 @@
 src/*
 node_modules/*
+README.md
+package.json
+webpack.config.js
+yarn.lock
