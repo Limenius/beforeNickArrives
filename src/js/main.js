@@ -88,7 +88,7 @@ class Game {
     }
 
     preLoad(loader, resources) {
-        var elkTexture = PIXI.Texture.fromImage('/dist/img/elk.png');
+        var elkTexture = PIXI.Texture.fromImage('./dist/img/elk.png');
         var elk = new PIXI.Sprite(elkTexture);
         elk.anchor.x = 0.5;
         elk.anchor.y = 0.5;
@@ -215,8 +215,8 @@ class Game {
     loadGraphics() {
         return new Promise( (resolve, reject) => {
             PIXI.loader
-            .add('bg', '/dist/img/room.png')
-            .add('bgMap', '/dist/img/room-map2.png')
+            .add('bg', './dist/img/room.png')
+            .add('bgMap', './dist/img/room-map2.png')
             .load((loader, resources) => {
                 resolve({loader, resources});
             });
