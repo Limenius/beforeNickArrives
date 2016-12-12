@@ -49,6 +49,7 @@ class Game {
         this.talkingText.anchor.set(0.5, 0.5);
         this.talkingText.x = 500;
         this.talkingText.y = 50;
+        this.act = 1
 
         this.uiState = {
             entity: null,
@@ -188,7 +189,7 @@ class Game {
     }
 
     getDialogOption(x, y) {
-        if (y < 530) {
+        if (y < 510) {
             return null;
         }
         const index = Math.floor((y - 510) / 30);
@@ -221,13 +222,12 @@ class Game {
     }
 
     runAction(entity, action) {
-        if (action == 'TALK') {
+        if (action == 'TALK' || action == 'INTERROGATE') {
             this.uiDialog.renderable = true;
             if (dialogs[entity.key]) {
                 return this.runDialog(dialogs[entity.key]);
             }
         }
-        console.log(action);
         if (!entity.actions[action]) {
             this.setTalkingText("I can\'t do that.", 1500);
             return;
@@ -256,7 +256,7 @@ class Game {
         this.uiState.dialogOptions = [];
 
         const availableKeys = keys.filter((key) => {
-            return dialog[key].available;
+            return dialog[key].available && dialog[key].interrogate == (this.uiState.action == 'TALK' ? false : true);
         });
 
         for (let i = 0; i < availableKeys.length; i++) {
@@ -347,23 +347,21 @@ class Game {
     }
 
     dispatch(action) {
-        console.log(action);
         switch (action.type) {
             case 'END DIALOG':
                 this.uiDialog.renderable = false;
                 this.uiActions.renderable = true;
                 this.setUpUIEvents();
+                if (this.gameState.hasTalked.length == 1) {
+                    setTimeout(() => {this.setTalkingText('Ok, I think I have talked with everybody, now what?', 5000)}, 4000);
+                }
                 return;
             case 'LOOK BODY':
-                console.log('look body');
                 this.makeDialogAvailableByTag('after-look-body');
                 return;
             case 'HAS TALKED':
                 if (this.gameState.hasTalked.indexOf(action.character) == -1) {
                     this.gameState.hasTalked.push(action.character);
-                }
-                if (this.gameState.hasTalked.length == 2) {
-                    setTimeout(() => {this.setTalkingText('Ok, I think I have talked with everybody, now what?', 6000)}, 3000);
                 }
                 return;
             default:
@@ -381,7 +379,6 @@ class Game {
             }
         }
     }
-
 }
 
 

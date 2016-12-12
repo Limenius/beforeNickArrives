@@ -5,6 +5,8 @@ const dialogs = {
             available: true,
             timeout: 2000,
             tag: 'introductory',
+            act: 1,
+            interrogate: false
 
             //dispatch(state) => {dis
             //    state.hasTalked.push('MATT');
@@ -18,7 +20,9 @@ const dialogs = {
             trigger: {
                 type: 'HAS TALKED',
                 character: 'MATT',
-            }
+            },
+            act: 1,
+            interrogate: false
         },
         'Have you been here long?': {
             response: 'Not much.\nWas almost everyone already here when I arrived.',
@@ -28,7 +32,9 @@ const dialogs = {
             trigger: {
                 type: 'HAS TALKED',
                 character: 'MATT',
-            }
+            },
+            act: 1,
+            interrogate: true
         },
         'Talk to you later': {
             response: 'Sure',
@@ -37,7 +43,9 @@ const dialogs = {
             tag: 'introductory',
             trigger: {
                 type: 'END DIALOG',
-            }
+            },
+            act: 1,
+            interrogate: false
         }
     },
     FLYNN: {
@@ -45,6 +53,8 @@ const dialogs = {
             response: 'Hi, Jack. This sounds quite good, ugh?',
             available: true,
             timeout: 2500,
+            act: 1,
+            interrogate: false
         },
         'What happened here?': {
             response: 'Not much, Jack. But I\'m feeling inspired today.',
@@ -54,7 +64,9 @@ const dialogs = {
             trigger: {
                 type: 'HAS TALKED',
                 character: 'FLYNN',
-            }
+            },
+            act: 1,
+            interrogate: false
         },
         'Have you seen someone acting weird?': {
             response: 'People ARE weird Jack, you should know that.',
@@ -64,7 +76,9 @@ const dialogs = {
             trigger: {
                 type: 'HAS TALKED',
                 character: 'FLYNN',
-            }
+            },
+            act: 1,
+            interrogate: true
         },
         'Ok, enough for now.': {
             response: 'Ok, buddy',
@@ -73,7 +87,9 @@ const dialogs = {
             tag: 'introductory',
             trigger: {
                 type: 'END DIALOG',
-            }
+            },
+            act: 1,
+            interrogate: false
         }
     },
     RONNIE: {
@@ -81,6 +97,8 @@ const dialogs = {
             response: 'Hi, Jack, good to see you.',
             available: true,
             timeout: 2500,
+            act: 1,
+            interrogate: false
         },
         'What\'s this mess? Nick is going to be mad.': {
             response: 'I guessed you wouldn\'t be happy.\nMaybe I\'m getting better at the guessing thing.',
@@ -90,7 +108,9 @@ const dialogs = {
             trigger: {
                 type: 'HAS TALKED',
                 character: 'MATT',
-            }
+            },
+            act: 1,
+            interrogate: false
         },
         'Why are you at the door?': {
             response: 'I just arrived. I thought\nyou would like me to watch the door.',
@@ -100,7 +120,9 @@ const dialogs = {
             trigger: {
                 type: 'HAS TALKED',
                 character: 'FLYNN',
-            }
+            },
+            act: 1,
+            interrogate: true
         },
         'Hold in there.': {
             response: 'As you say, Jack.',
@@ -109,7 +131,9 @@ const dialogs = {
             tag: 'introductory',
             trigger: {
                 type: 'END DIALOG',
-            }
+            },
+            act: 1,
+            interrogate: false
         }
     },
     TONNY: {
@@ -117,6 +141,8 @@ const dialogs = {
             response: 'Do I really need to answer that?',
             available: true,
             timeout: 2500,
+            act: 1,
+            interrogate: false
         },
         'Can you help me out a bit here?': {
             response: 'Not really.',
@@ -126,7 +152,9 @@ const dialogs = {
             trigger: {
                 type: 'HAS TALKED',
                 character: 'TONNY',
-            }
+            },
+            act: 1,
+            interrogate: false
         },
         'Who was in the room when you came in?': {
             response: 'Just those two at the bar. Lucky me.',
@@ -136,7 +164,9 @@ const dialogs = {
             trigger: {
                 type: 'HAS TALKED',
                 character: 'TONNY',
-            }
+            },
+            act: 1,
+            interrogate: true
         },
         'Ok... See you later.': {
             response: 'Are you planning to spoil my whole evening?',
@@ -145,7 +175,9 @@ const dialogs = {
             tag: 'introductory',
             trigger: {
                 type: 'END DIALOG',
-            }
+            },
+            act: 1,
+            interrogate: false
         }
     },
     LORA: {
@@ -153,6 +185,8 @@ const dialogs = {
             response: 'What do you care, Jack?',
             available: true,
             timeout: 2500,
+            act: 1,
+            interrogate: false
         },
         'Do you know why the new guy is dead in the middle of the room?': {
             response: 'Do you think I waste my precious time\nwith that kind of things, Jack?',
@@ -162,7 +196,9 @@ const dialogs = {
             trigger: {
                 type: 'HAS TALKED',
                 character: 'LORA',
-            }
+            },
+            act: 1,
+            interrogate: false
         },
         'Who was here when you arrived?': {
             response: 'You really know how to party, Jack...\nNo one.\nUnless you still want to call THAT someone.',
@@ -172,7 +208,9 @@ const dialogs = {
             trigger: {
                 type: 'HAS TALKED',
                 character: 'LORA',
-            }
+            },
+            act: 1,
+            interrogate: true
         },
         'Nice talking to you...': {
             response: 'I wish I could say the same.',
@@ -181,7 +219,9 @@ const dialogs = {
             tag: 'introductory',
             trigger: {
                 type: 'END DIALOG',
-            }
+            },
+            act: 1,
+            interrogate: false
         }
     },
     JOE: {
@@ -189,6 +229,8 @@ const dialogs = {
             response: 'Pretty well, Jack, we have some good Scotch here.',
             available: true,
             timeout: 2500,
+            act: 1,
+            interrogate: false
         },
         'What happened with Johnny?': {
             response: 'I don\'t know, Jack, he was there when I arrived.',
@@ -198,7 +240,9 @@ const dialogs = {
             trigger: {
                 type: 'HAS TALKED',
                 character: 'JOE',
-            }
+            },
+            act: 1,
+            interrogate: false
         },
         'For how long have you been here?': {
             response: 'I came a while ago with Lora.',
@@ -208,7 +252,9 @@ const dialogs = {
             trigger: {
                 type: 'HAS TALKED',
                 character: 'JOE',
-            }
+            },
+            act: 1,
+            interrogate: true
         },
         'Thanks, Joe.': {
             response: 'No problem, man.',
@@ -217,7 +263,9 @@ const dialogs = {
             tag: 'introductory',
             trigger: {
                 type: 'END DIALOG',
-            }
+            },
+            act: 1,
+            interrogate: false
         }
     },
 }
