@@ -1,5 +1,3 @@
-import actions from './actions';
-
 const entities = {
     '#0000ff' : {
         name: 'sofa',
@@ -15,6 +13,10 @@ const entities = {
         actions: {
             LOOK : {
                 text: 'Its face reminds me of a past relationship. \nI don\'t really want to talk about it.',
+                timeout: 5000,
+            },
+            TALK : {
+                text: 'As therapeutic as it could be, I am not sure\nif it would gain me much respect from the others.',
                 timeout: 5000,
             }
         }
@@ -209,6 +211,7 @@ const entities = {
         }
     },
     '#e06f8b' : {
+        key: 'MATT',
         name: 'Matt',
         actions: {
             LOOK : {
