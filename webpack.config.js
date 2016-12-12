@@ -17,6 +17,7 @@ var config = {
         extensions: ['', '.js'],
     },
     output: {
+        publicPath: './dist/',
         path: './dist/',
         filename: '[name].js'
     },
