@@ -72,6 +72,65 @@ class Game {
             this.onLoad(loader, resources)
         });
 
+        this.preLoad();
+
+    }
+
+    preLoad(loader, resources) {
+        var elkTexture = PIXI.Texture.fromImage('/dist/img/elk.png');
+        var elk = new PIXI.Sprite(elkTexture);
+        elk.anchor.x = 0.5;
+        elk.anchor.y = 0.5;
+        elk.position.x = 500;
+        elk.position.y = 315;
+
+        this.elk = elk;
+
+        this.introText = new PIXI.Text('Before Nick arrives',{fontFamily : 'Pixilator', fontSize: '36px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
+        this.introText.anchor.set(0.5, 0.5);
+        this.introText.x = 500;
+        this.introText.y = 60;
+        this.introText2 = new PIXI.Text('Press space to play',{fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
+        this.introText2.anchor.set(0.5, 0.5);
+        this.introText2.x = 500;
+        this.introText2.y = 570;
+        this.stage.addChild(this.elk);
+        this.stage.addChild(this.introText);
+        this.stage.addChild(this.introText2);
+
+        this.renderer.render(this.stage);
+        this.animate();
+
+        const enterPreload = (evt) => {
+            if (evt.keyCode == 32) {
+                this.preLoad2();
+                document.removeEventListener('keydown', enterPreload);
+            }
+        }
+        document.addEventListener('keydown', enterPreload);
+    }
+
+    preLoad2() {
+        this.introText.renderable = false;
+        this.introText2.renderable = false;
+        this.elk.renderable = false;
+
+        this.intro2Text = new PIXI.Text('Today Nick was in a very bad mood.\n\nHer daugher Lora was having a party at his house with the boys.\n\nI better check if everything is in order with them.', {fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
+        this.intro2Text.anchor.set(0.5, 0.5);
+        this.intro2Text.x = 500;
+        this.intro2Text.y = 200;
+        this.stage.addChild(this.intro2Text);
+        this.renderer.render(this.stage);
+
+        const enterPreload = (evt) => {
+            if (evt.keyCode == 32) {
+                if (this.loaded) {
+                    this.start();
+                }
+                document.removeEventListener('keydown', enterPreload);
+            }
+        }
+        document.addEventListener('keydown', enterPreload);
     }
 
     renderDialogUI() {
@@ -141,19 +200,16 @@ class Game {
     }
 
     onLoad(loader, resources) {
-        this.sound.play('song1');
         var bgTexture = new PIXI.Texture(resources.bg.texture, new PIXI.Rectangle(0, 0, 1000, 480));
         var background = new PIXI.Sprite(bgTexture);
         background.anchor.x = 0;
         background.anchor.y = 0;
         background.position.x = 0;
         background.position.y = 0;
-        this.stage.addChild(background);
-        this.stage.addChild(this.statusText);
-        this.stage.addChild(this.talkingText);
-        this.renderUI();
-        this.renderDialogUI();
-        this.renderer.render(this.stage);
+
+
+        this.background = background;
+
 
         var imgMapTexture = new PIXI.Texture(resources.bgMap.texture, new PIXI.Rectangle(0, 0, 1000, 480));
         var imgMapBg = new PIXI.Sprite(imgMapTexture);
@@ -165,9 +221,23 @@ class Game {
         this.imgMap.addChild(imgMapBg);
         this.rendererMap.render(this.imgMap);
 
+        this.loaded = true;
+    }
+
+    start() {
+        this.sound.play('song1');
+        this.stage.addChild(this.background);
+        this.stage.addChild(this.statusText);
+        this.stage.addChild(this.talkingText);
+        this.renderUI();
+        this.renderDialogUI();
+
+        this.stage.addChild(this.elk);
+        this.renderer.render(this.stage);
+
         this.setUpUIEvents();
 
-        this.animate();
+        //this.animate();
     }
 
     setUpUIEvents() {
