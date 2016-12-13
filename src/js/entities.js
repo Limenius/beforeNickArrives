@@ -121,7 +121,7 @@ const entities = {
                 timeout: 1500,
             },
             TOUCH : {
-                text: 'It is not mine.',
+                text: 'Silky
                 timeout: 1500,
             },
             INSPECT : {
@@ -138,7 +138,7 @@ const entities = {
                 timeout: 1500,
             },
             TOUCH : {
-                text: 'It is not mine.',
+                text: 'Smooth.',
                 timeout: 1500,
             },
             INSPECT : {
@@ -214,7 +214,7 @@ const entities = {
                 timeout: 2000,
             },
             TOUCH : {
-                text: 'I leart some years ago that there it is no need\nto touch something only because it shines.',
+                text: 'I learnt some years ago that there it is no need\nto touch something only because it shines.',
                 timeout: 4000,
             },
             INSPECT : {
