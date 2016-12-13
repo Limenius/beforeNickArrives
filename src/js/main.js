@@ -505,7 +505,7 @@ class Game {
         spacePlay.x = 500;
         spacePlay.y = 570;
 
-        var nickText = new PIXI.Text('It was Nick.\n\nHe is coming.\n\nIf sees this mess he will kill me.', {fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
+        var nickText = new PIXI.Text('It was Nick.\n\nHe is coming.\n\nIf he sees the new guy dead without explanation he will kill me.', {fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
         nickText.anchor.set(0.5, 0.5);
         nickText.x = 500;
         nickText.y = 200;
