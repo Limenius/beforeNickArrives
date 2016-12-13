@@ -7,11 +7,8 @@ import dialogs from './dialogs';
 import Sound from './sound.js';
 
 WebFont.load({
-    google: {
-        families: ['VT323', 'Droid Serif']
-    },
     custom: {
-        families: ["Foo"]
+        families: ['Pixilator']
     },
     active: function() {
         main();
@@ -41,6 +38,7 @@ class Game {
         this.mouseMove = this.mouseMove.bind(this);
         this.click = this.click.bind(this);
         this.clickDialog = this.clickDialog.bind(this);
+        this.fadeOut = this.fadeOut.bind(this);
 
         this.renderer = PIXI.autoDetectRenderer(1000, 480 + offsetH, null, {noWebGl: true, antialias: false});
         this.stage = new PIXI.Container();
@@ -90,7 +88,7 @@ class Game {
     }
 
     preLoad(loader, resources) {
-        var elkTexture = PIXI.Texture.fromImage('/dist/img/elk.png');
+        var elkTexture = PIXI.Texture.fromImage('./dist/img/elk.png');
         var elk = new PIXI.Sprite(elkTexture);
         elk.anchor.x = 0.5;
         elk.anchor.y = 0.5;
@@ -103,6 +101,7 @@ class Game {
         this.introText.anchor.set(0.5, 0.5);
         this.introText.x = 500;
         this.introText.y = 60;
+
         this.introText2 = new PIXI.Text('Press space to play',{fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
         this.introText2.anchor.set(0.5, 0.5);
         this.introText2.x = 500;
@@ -116,8 +115,8 @@ class Game {
 
         const enterPreload = (evt) => {
             if (evt.keyCode == 32) {
-                this.preLoad2();
                 document.removeEventListener('keydown', enterPreload);
+                this.preLoad2();
             }
         }
         document.addEventListener('keydown', enterPreload);
@@ -144,19 +143,18 @@ class Game {
             }
         }
         const checkLoaded = () => {
-            console.log('check');
             this.introText2.renderable = true;
             if (this.loaded) {
                 this.introText2.text = 'Press space to continue'
                 document.addEventListener('keydown', enterStart);
             } else {
-                this.intoText2.text = 'Loading'
+                this.introText2.text = 'Loading'
                 setTimeout(checkLoaded, 200);
             }
             this.renderer.render(this.stage);
         }
 
-        setTimeout(checkLoaded, 2000);
+        setTimeout(checkLoaded, 20);
     }
 
     renderDialogUI() {
@@ -217,8 +215,10 @@ class Game {
     loadGraphics() {
         return new Promise( (resolve, reject) => {
             PIXI.loader
-            .add('bg', '/dist/img/room.png')
-            .add('bgMap', '/dist/img/room-map2.png')
+            .add('bg', './dist/img/room.png')
+            .add('bgMap', './dist/img/room-map2.png')
+            .add('phone', './dist/img/phonering.png')
+            .add('ronnie', './dist/img/ronnie.png')
             .load((loader, resources) => {
                 resolve({loader, resources});
             });
@@ -226,6 +226,16 @@ class Game {
     }
 
     onLoad(loader, resources) {
+        this.phoneText = new PIXI.Text('',{fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
+        this.phoneText.anchor.set(0.5, 0.5);
+        this.phoneText.x = 380;
+        this.phoneText.y = 305;
+
+        this.ronnieText = new PIXI.Text('',{fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
+        this.ronnieText.anchor.set(0.5, 0.5);
+        this.ronnieText.x = 260;
+        this.ronnieText.y = 140;
+
         var bgTexture = new PIXI.Texture(resources.bg.texture, new PIXI.Rectangle(0, 0, 1000, 480));
         var background = new PIXI.Sprite(bgTexture);
         background.anchor.x = 0;
@@ -235,6 +245,31 @@ class Game {
 
         this.background = background;
 
+        function getFramesFromSpriteSheet(texture, frameWidth, frameHeight, row, numSprites) {
+            var frames = [];
+            for(var i = 0; i < numSprites; i++) {
+                frames.push(new PIXI.Texture(texture.baseTexture, new PIXI.Rectangle(i * frameWidth, row * frameHeight, frameWidth, frameHeight)));
+            }
+            return frames;
+        }
+        var phoneFrames = getFramesFromSpriteSheet(resources.phone.texture, 58, 44, 0, 4);
+        var phone = new PIXI.extras.MovieClip(phoneFrames);
+        //var phoneTexture = new PIXI.Texture(resources.phone.texture, new PIXI.Rectangle(0, 0, 58, 44));
+        //var phone = new PIXI.Sprite(phoneTexture);
+        phone.animationSpeed = 0.3;
+        phone.position.x = 354;
+        phone.position.y = 324;
+        //phone.play();
+
+        this.phone = phone;
+
+        var ronnieFrames = getFramesFromSpriteSheet(resources.ronnie.texture, 86, 212, 0, 2);
+        var ronnie = new PIXI.extras.MovieClip(ronnieFrames);
+        ronnie.animationSpeed = 0.15;
+        ronnie.position.x = 148;
+        ronnie.position.y = 194;
+        this.ronnie = ronnie;
+
         var imgMapTexture = new PIXI.Texture(resources.bgMap.texture, new PIXI.Rectangle(0, 0, 1000, 480));
         var imgMapBg = new PIXI.Sprite(imgMapTexture);
         imgMapBg.anchor.x = 0;
@@ -243,6 +278,8 @@ class Game {
         imgMapBg.position.y = 0;
 
         this.imgMap.addChild(imgMapBg);
+
+
         this.rendererMap.render(this.imgMap);
 
         this.loaded = true;
@@ -253,12 +290,16 @@ class Game {
 
         this.songId = this.sound.play('song1');
         this.stage.addChild(this.background);
+        this.stage.addChild(this.phone);
+        this.stage.addChild(this.ronnie);
         this.stage.addChild(this.statusText);
         this.stage.addChild(this.talkingText);
         this.renderUI();
         this.renderDialogUI();
 
         this.stage.addChild(this.elk);
+        this.stage.addChild(this.phoneText);
+        this.stage.addChild(this.ronnieText);
         this.renderer.render(this.stage);
 
         this.setUpUIEvents();
@@ -273,12 +314,23 @@ class Game {
         //this.animate();
     }
 
-    fadeIn() {
+    fadeIn(callback) {
         this.screenFadeContainer.alpha = this.screenFadeContainer.alpha - 0.05;
         if (this.screenFadeContainer.alpha > 0) {
             setTimeout(this.fadeIn.bind(this), 100);
+        } else {
+            callback && callback();
         }
+    }
 
+    fadeOut(callback) {
+        this.screenFadeContainer.alpha = this.screenFadeContainer.alpha + 0.05;
+        if (this.screenFadeContainer.alpha < 1) {
+            setTimeout(() => {this.fadeOut(callback)}, 100);
+        } else {
+            this.screenFadeContainer.alpha = 1
+            callback && callback();
+        }
     }
 
     setUpUIEvents() {
@@ -459,6 +511,52 @@ class Game {
         return this;
     }
 
+    startAct2() {
+        var spacePlay = new PIXI.Text('Press space to continue',{fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
+        spacePlay.anchor.set(0.5, 0.5);
+        spacePlay.x = 500;
+        spacePlay.y = 570;
+
+        var nickText = new PIXI.Text('It was Nick. He is coming.\n\nIf he sees the new guy dead without explanation he will kill me.', {fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
+        nickText.anchor.set(0.5, 0.5);
+        nickText.x = 500;
+        nickText.y = 200;
+
+        const enterAct2 = (evt) => {
+            this.songId = this.sound.play('song2');
+            if (evt.keyCode == 32) {
+                this.stage.removeChild(spacePlay);
+                document.removeEventListener('keydown', enterAct2);
+                this.phone.gotoAndStop(0);
+                this.phoneText.renderable = false;
+                nickText.renderable = false;
+                this.renderNewUIActions();
+                this.introText2.renderable = false;
+                this.fadeIn();
+            }
+        }
+        this.stage.addChild(spacePlay);
+        this.stage.addChild(nickText);
+        document.addEventListener('keydown', enterAct2);
+    }
+
+    end() {
+        var spacePlay = new PIXI.Text('Thanks for playing',{fontFamily : 'Pixilator', fontSize: '24px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
+        spacePlay.anchor.set(0.5, 0.5);
+        spacePlay.x = 500;
+        spacePlay.y = 160;
+
+        var nickText = new PIXI.Text('Before Nick arrives', {fontFamily : 'Pixilator', fontSize: '48px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
+        nickText.anchor.set(0.5, 0.5);
+        nickText.x = 500;
+        nickText.y = 370;
+        nickText.renderable = true;
+
+        this.stage.addChild(spacePlay);
+        this.stage.addChild(nickText);
+    }
+
+
     dispatch(action) {
         switch (action.type) {
             case 'END DIALOG':
@@ -468,14 +566,47 @@ class Game {
                 if (this.gameState.hasTalked.length == 1) {
                     setTimeout(() => {
                         this.setTalkingText('Ok, I think I have talked to everybody, now what?', 4000);
-                        this.renderNewUIActions();
-                        this.sound.stop('song1', this.songId);
-                        this.songId = this.sound.play('song2');
+                        setTimeout(() => {
+                            this.phone.play();
+                            this.phoneText.text = 'RIIIING\nRIIING';
+                            setTimeout(() => {
+                                this.sound.stop('song1', this.songId);
+                                this.fadeOut(() => {this.startAct2()});
+                            }, 4000);
+                        }, 3000);
                     }, 3000);
                     this.act = 2;
                 }
                 return;
             case 'LOOK BODY':
+                ////
+                this.uiDialog.renderable = false;
+                this.uiActions.renderable = true;
+                this.setUpUIEvents();
+                setTimeout(() => {
+                    this.setTalkingText('Ok, I have solved this mystery,\nand Nick will have a pretty head to thow to the dogs.', 4000);
+                    setTimeout(() => {
+                        this.ronnie.play();
+                        this.sound.stop('song2', this.songId);
+                        this.ronnieText.text = 'NOOOOOOOOOO!';
+                        setTimeout(() => {
+                            this.ronnieText.text = 'That asshole... \nhe wouldn\'t stop bragging with her picture...';
+                        setTimeout(() => {
+                            this.ronnieText.text = 'I couldn\t stand it.\nShe is just an innocent angel!!';
+                            setTimeout(() => {
+                                this.ronnieText.text = 'And you, what kind\nof crime solver are you?';
+                                setTimeout(() => {
+                                    this.fadeOut(() => {this.end()});
+                                }, 8000);
+                            }, 4000);
+                        }, 4000);
+                        }, 4000);
+
+                    }, 3000);
+                }, 3000);
+                this.act = 3;
+                /////
+                return;
                 this.makeDialogAvailableByTag('after-look-body');
                 this.makeDialogAvailableByTag('ending-interrogate');
                 return;
