@@ -308,7 +308,6 @@ class Game {
     }
 
     fadeOut(callback) {
-        console.log(callback);
         this.screenFadeContainer.alpha = this.screenFadeContainer.alpha + 0.05;
         if (this.screenFadeContainer.alpha < 1) {
             setTimeout(() => {this.fadeOut(callback)}, 100);
@@ -500,12 +499,12 @@ class Game {
 
     startAct2() {
         console.log('startAct2');
-        var spacePlay = new PIXI.Text('Press space to play',{fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
+        var spacePlay = new PIXI.Text('Press space to continue',{fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
         spacePlay.anchor.set(0.5, 0.5);
         spacePlay.x = 500;
         spacePlay.y = 570;
 
-        var nickText = new PIXI.Text('It was Nick.\n\nHe is coming.\n\nIf he sees the new guy dead without explanation he will kill me.', {fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
+        var nickText = new PIXI.Text('It was Nick. He is coming.\n\nIf he sees the new guy dead without explanation he will kill me.', {fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
         nickText.anchor.set(0.5, 0.5);
         nickText.x = 500;
         nickText.y = 200;
@@ -517,13 +516,14 @@ class Game {
                 document.removeEventListener('keydown', enterAct2);
                 this.phone.gotoAndStop(0);
                 this.phoneText.renderable = false;
+                nickText.renderable = false;
                 this.renderNewUIActions();
                 this.introText2.renderable = false;
                 this.fadeIn();
             }
         }
         this.stage.addChild(spacePlay);
-        this.stage.addChild(nickTextPlay);
+        this.stage.addChild(nickText);
         document.addEventListener('keydown', enterAct2);
     }
 
@@ -537,7 +537,7 @@ class Game {
                 if (this.gameState.hasTalked.length == 1) {
                     setTimeout(() => {
                         this.setTalkingText('Ok, I think I have talked to everybody, now what?', 4000);
-                        setTimeOut(() => {
+                        setTimeout(() => {
                             this.phone.play();
                             this.phoneText.text = 'RIIIING\nRIIING';
                             setTimeout(() => {
