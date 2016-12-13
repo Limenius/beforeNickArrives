@@ -113,7 +113,7 @@ const entities = {
             },
         }
     },
-    '#b32633' : {
+    '#be2633' : {
         name: 'woman coat',
         actions: {
             LOOK : {
