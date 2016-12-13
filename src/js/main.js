@@ -563,7 +563,7 @@ class Game {
                 this.uiDialog.renderable = false;
                 this.uiActions.renderable = true;
                 this.setUpUIEvents();
-                if (this.gameState.hasTalked.length == 6 && this.act == 1) {
+                if (this.gameState.hasTalked.length == 1 && this.act == 1) {
                     setTimeout(() => {
                         this.setTalkingText('Ok, I think I have talked to everybody, now what?', 4000);
                         setTimeout(() => {

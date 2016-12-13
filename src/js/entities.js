@@ -183,6 +183,9 @@ const entities = {
             FRISK : {
                 text: 'A fast diet book...? And a gun.',
                 timeout: 5000,
+                trigger: {
+                    type: 'FRISK RONNIE',
+                }
             },
         }
     },
