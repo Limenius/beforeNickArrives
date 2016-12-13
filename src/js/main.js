@@ -74,6 +74,7 @@ class Game {
         this.gameState = {
             dialogs: dialogs,
             hasTalked: [],
+            loraRelationship: 0
         }
 
         this.sound = new Sound();
@@ -488,6 +489,22 @@ class Game {
             case 'FRISK MOOSE':
                 this.makeDialogAvailableByTag('after-frisk-moose');
                 return;
+            case 'LORA NUMBER':
+                this.makeDialogAvailableByTag('after-lora-number');
+                return;
+            case 'LORA RELATIONSHIP':
+                this.makeDialogAvailableByTag('after-lora-relationship');
+                return;
+            case 'LORA CONFESSION':
+                this.makeDialogAvailableByTag('after-lora-confession');
+                return;
+            case 'LORA MOTIVATION':
+                this.makeDialogAvailableByTag('after-lora-motivation');
+                this.makeDialogUnavailableByTag('after-frisk-body');
+                return;
+            case 'LORA OPPORTUNITY':
+                this.makeDialogAvailableByTag('after-lora-opportunity');
+                return;
             case 'HAS TALKED':
                 if (this.gameState.hasTalked.indexOf(action.character) == -1) {
                     this.gameState.hasTalked.push(action.character);
@@ -503,6 +520,16 @@ class Game {
             for (var line in dialogs[character]) {
                 if (dialogs[character][line].tag && dialogs[character][line].tag == tag) {
                     dialogs[character][line].available = true;
+
+                }
+            }
+        }
+    }
+    makeDialogUnvailableByTag(tag) {
+        for (var character in dialogs) {
+            for (var line in dialogs[character]) {
+                if (dialogs[character][line].tag && dialogs[character][line].tag == tag) {
+                    dialogs[character][line].available = false;
 
                 }
             }
