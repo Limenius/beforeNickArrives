@@ -289,10 +289,10 @@ const dialogs = {
         'Lora had a secret relationship with Johnny. I wonder if she killed him. But why would?': {
             response: 'To steal that necklace from him? Because he was\nbecoming a problem for her? Just for fun?\nThat woman doesn\'t need much reason to kill someone.',
             available: false,
-            timeout: 3000,
+            timeout: 8000,
             tag: 'after-lora-confession',
             trigger: {
-                type: 'LORA MOTIVATION ',
+                type: 'LORA MOTIVATION',
             },
             interrogate: true
         },
@@ -453,7 +453,7 @@ const dialogs = {
             },
             interrogate: true
         },
-        'I think Lora may have killed Johnny. But how could she?\nShe came with you and the body was already here...': {
+        'I think Lora may have killed Johnny. But how could she? She came with you and the body was here...': {
             response: 'Well, technically, I didn\'t came WITH her. I saw her entering the room.\nBut we didn\'t arrive together to the building.\nMaybe she was here before.',
             available: false,
             timeout: 8000,
