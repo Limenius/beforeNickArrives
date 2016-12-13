@@ -121,7 +121,7 @@ const entities = {
                 timeout: 1500,
             },
             TOUCH : {
-                text: 'Silky
+                text: 'Silky.',
                 timeout: 1500,
             },
             INSPECT : {
