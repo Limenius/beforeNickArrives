@@ -632,7 +632,7 @@ class Game {
                 this.uiActions.renderable = true;
                 this.setUpUIEvents();
                 setTimeout(() => {
-                    this.setTalkingText('Ok, I have solved this mystery,\nand Nick will have a pretty head to thow to the dogs.', 4000);
+                    this.setTalkingText('You can explain that to Nick', 4000);
                     setTimeout(() => {
                         this.ronnie.play();
                         this.sound.stop('song2', this.songId);
@@ -643,6 +643,7 @@ class Game {
                             this.ronnieText.text = 'I couldn\t stand it.\nShe is just an innocent angel!!';
                             setTimeout(() => {
                                 this.ronnieText.text = 'And you, what kind\nof crime solver are you?';
+                                this.uiActions.renderable = false;
                                 setTimeout(() => {
                                     this.fadeOut(() => {this.end()});
                                 }, 8000);
