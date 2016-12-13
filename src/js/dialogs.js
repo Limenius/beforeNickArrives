@@ -72,7 +72,19 @@ const dialogs = {
             trigger: {
                 type: 'END DIALOG',
             },
-            interrogate: false
+            interrogate: false,
+            ending: true
+        },
+        'I\'ll be back.': {
+            response: 'Ok.',
+            timeout: 2000,
+            available: false,
+            tag: 'after-look-body',
+            trigger: {
+                type: 'END DIALOG',
+            },
+            interrogate: true,
+            ending: true
         }
     },
     FLYNN: {
@@ -137,7 +149,19 @@ const dialogs = {
             trigger: {
                 type: 'END DIALOG',
             },
-            interrogate: false
+            interrogate: false,
+            ending: true
+        },
+        'I\'ll be back.': {
+            response: 'Ok, Jack.',
+            timeout: 2000,
+            available: false,
+            tag: 'after-look-body',
+            trigger: {
+                type: 'END DIALOG',
+            },
+            interrogate: true,
+            ending: true
         }
     },
     RONNIE: {
@@ -198,7 +222,19 @@ const dialogs = {
             trigger: {
                 type: 'END DIALOG',
             },
-            interrogate: false
+            interrogate: false,
+            ending: true
+        },
+        'I\'ll be back.': {
+            response: 'Sure.',
+            timeout: 2000,
+            available: false,
+            tag: 'after-look-body',
+            trigger: {
+                type: 'END DIALOG',
+            },
+            interrogate: true,
+            ending: true
         }
     },
     TONNY: {
@@ -270,6 +306,17 @@ const dialogs = {
                 type: 'END DIALOG',
             },
             interrogate: false
+        },
+        'I\'ll be back.': {
+            response: 'Ok...',
+            timeout: 2000,
+            available: false,
+            tag: 'after-look-body',
+            trigger: {
+                type: 'END DIALOG',
+            },
+            interrogate: true,
+            ending: true
         }
     },
     LORA: {
@@ -351,6 +398,17 @@ const dialogs = {
                 type: 'END DIALOG',
             },
             interrogate: false
+        },
+        'I\'ll be back.': {
+            response: 'Oh, well...',
+            timeout: 2000,
+            available: false,
+            tag: 'after-look-body',
+            trigger: {
+                type: 'END DIALOG',
+            },
+            interrogate: true,
+            ending: true
         }
     },
     JOE: {
@@ -405,6 +463,17 @@ const dialogs = {
                 type: 'END DIALOG',
             },
             interrogate: false
+        },
+        'I\'ll be back.': {
+            response: 'Good.',
+            timeout: 2000,
+            available: false,
+            tag: 'after-look-body',
+            trigger: {
+                type: 'END DIALOG',
+            },
+            interrogate: true,
+            ending: true
         }
     },
 }
