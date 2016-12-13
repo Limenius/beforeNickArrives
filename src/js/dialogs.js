@@ -32,7 +32,7 @@ const dialogs = {
         'Why does Jhonny have a threatening note with your handwriting in his pocket, Matt?': {
             response: 'Mmm... He caught me gambling again and suggested\nthat he could tell Nick.\nI explained to him that we don\'t like rats.',
             available: false,
-            timeout: 3500,
+            timeout: 5000,
             tag: 'after-frisk-body',
             trigger: {
                 type: 'HAS TALKED',
@@ -58,7 +58,7 @@ const dialogs = {
             response: 'Well, I\'m not the detective here, \nbut what do you think, Jack...?.',
             available: false,
             timeout: 6000,
-            tag: 'after-frisk-moose',
+            tag: 'after-lora-number',
             trigger: {
                 type: 'LORA RELATIONSHIP',
             },
@@ -79,7 +79,7 @@ const dialogs = {
             response: 'Ok.',
             timeout: 2000,
             available: false,
-            tag: 'after-look-body',
+            tag: 'ending-interrogate',
             trigger: {
                 type: 'END DIALOG',
             },
@@ -118,7 +118,7 @@ const dialogs = {
             timeout: 4000,
             tag: 'after-frisk-flynn',
             trigger: {
-                type: 'HAS TALKED',
+                type: 'HAS INTERROGATED',
                 character: 'FLYNN',
             },
             interrogate: true
@@ -130,12 +130,11 @@ const dialogs = {
             tag: 'after-frisk-flynn',
             trigger: {
                 type: 'LORA NUMBER',
-                character: 'FLYNN',
             },
             interrogate: true
         },
-        'Do you recognize this picture, Flynn?': {
-            response: 'All but the pearls.',
+        'Do you recognize this collar before, Flynn?': {
+            response: 'I recognize everything but the collar.',
             available: false,
             timeout: 3000,
             tag: 'after-frisk-moose',
@@ -156,7 +155,7 @@ const dialogs = {
             response: 'Ok, Jack.',
             timeout: 2000,
             available: false,
-            tag: 'after-look-body',
+            tag: 'ending-interrogate',
             trigger: {
                 type: 'END DIALOG',
             },
@@ -229,7 +228,7 @@ const dialogs = {
             response: 'Sure.',
             timeout: 2000,
             available: false,
-            tag: 'after-look-body',
+            tag: 'ending-interrogate',
             trigger: {
                 type: 'END DIALOG',
             },
@@ -287,7 +286,7 @@ const dialogs = {
             tag: 'after-frisk-moose',
             interrogate: true
         },
-        'Lora had a secret relationship with Johnny... I wonder if she killed him.\nBut why would?': {
+        'Lora had a secret relationship with Johnny. I wonder if she killed him. But why would she?': {
             response: 'To steal that necklace from him? Because he was\nbecoming a problem for her? Just for fun?\nThat woman doesn\'t need much reason to kill someone.',
             available: false,
             timeout: 3000,
@@ -311,7 +310,7 @@ const dialogs = {
             response: 'Ok...',
             timeout: 2000,
             available: false,
-            tag: 'after-look-body',
+            tag: 'ending-interrogate',
             trigger: {
                 type: 'END DIALOG',
             },
@@ -369,13 +368,13 @@ const dialogs = {
             tag: 'after-frisk-moose',
             interrogate: true
         },
-        'I think Lora may have killed Johnny. But how could she?\nShe came with you and the body was already here...': {
-            response: 'Well, I never said she came WITH me. I saw her entering the room.\nBut we didn\'t arrive together to the building.\nMaybe she was here before.',
+        'I think you were having an affair with Johnny, Lora.': {
+            response: 'Oh, you are a pain. Ok, YES. I was. And what about that?\nThat doesn\'t mean that I killed him.\nBut I will kill YOU if you mention any of this to Nick.',
             available: false,
             timeout: 8000,
-            tag: 'after-lora-motivation',
+            tag: 'after-lora-relationship',
             trigger: {
-                type: 'LORA OPPORTUNITY',
+                type: 'LORA CONFESSION',
             },
             interrogate: true
         },
@@ -383,9 +382,9 @@ const dialogs = {
             response: 'How you dare...?!',
             available: false,
             timeout: 8000,
-            tag: 'after-lora-motivation',
+            tag: 'after-lora-opportunity',
             trigger: {
-                type: 'LORA OPPORTUNITY',
+                type: 'LORA ACCUSATION',
             },
             interrogate: true
         },
@@ -403,7 +402,7 @@ const dialogs = {
             response: 'Oh, well...',
             timeout: 2000,
             available: false,
-            tag: 'after-look-body',
+            tag: 'ending-interrogate',
             trigger: {
                 type: 'END DIALOG',
             },
@@ -454,6 +453,16 @@ const dialogs = {
             },
             interrogate: true
         },
+        'I think Lora may have killed Johnny. But how could she?\nShe came with you and the body was already here...': {
+            response: 'Well, technically, I didn\'t came WITH her. I saw her entering the room.\nBut we didn\'t arrive together to the building.\nMaybe she was here before.',
+            available: false,
+            timeout: 8000,
+            tag: 'after-lora-motivation',
+            trigger: {
+                type: 'LORA OPPORTUNITY',
+            },
+            interrogate: true
+        },
         'Thanks, Joe.': {
             response: 'No problem, man.',
             timeout: 2000,
@@ -468,7 +477,7 @@ const dialogs = {
             response: 'Good.',
             timeout: 2000,
             available: false,
-            tag: 'after-look-body',
+            tag: 'ending-interrogate',
             trigger: {
                 type: 'END DIALOG',
             },

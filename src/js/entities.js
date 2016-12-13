@@ -577,6 +577,9 @@ const entities = {
             FRISK : {
                 text: 'A gun... And a picture with Lora.\n They were together some time ago.\nI thought he had got over it.',
                 timeout: 5000,
+                trigger: {
+                    type: 'FRISK FLYNN',
+                }
             },
         }
     },

@@ -74,7 +74,8 @@ class Game {
         this.gameState = {
             dialogs: dialogs,
             hasTalked: [],
-            loraRelationship: 0
+            loraRelationship: false,
+            mooseFound: false
         }
 
         this.sound = new Sound();
@@ -127,7 +128,7 @@ class Game {
         this.introText2.renderable = false;
         this.elk.renderable = false;
 
-        this.intro2Text = new PIXI.Text('Today Nick was in a very bad mood.\n\nHer daugher Lora was having a party at his house with the boys.\n\nI better check if everything is in order with them.', {fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
+        this.intro2Text = new PIXI.Text('Today Nick was in a very bad mood.\n\nHer daugher Lora was having a party with the boys.\n\nI better check if everything is in order.', {fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
         this.intro2Text.anchor.set(0.5, 0.5);
         this.intro2Text.x = 500;
         this.intro2Text.y = 200;
@@ -476,6 +477,7 @@ class Game {
                 return;
             case 'LOOK BODY':
                 this.makeDialogAvailableByTag('after-look-body');
+                this.makeDialogAvailableByTag('ending-interrogate');
                 return;
             case 'FRISK BODY':
                 this.makeDialogAvailableByTag('after-frisk-body');
@@ -487,13 +489,24 @@ class Game {
                 this.makeDialogAvailableByTag('after-frisk-flynn');
                 return;
             case 'FRISK MOOSE':
+                this.gameState.mooseFound = true;
                 this.makeDialogAvailableByTag('after-frisk-moose');
+                this.makeDialogUnavailableByTag('after-look-body');
+                if (this.gameState.loraRelationship) {
+                    this.makeDialogAvailableByTag('after-lora-relationship');
+                    this.makeDialogUnavailableByTag('after-frisk-body');
+                }
                 return;
             case 'LORA NUMBER':
                 this.makeDialogAvailableByTag('after-lora-number');
+                this.makeDialogUnavailableByTag('after-look-body');
                 return;
             case 'LORA RELATIONSHIP':
-                this.makeDialogAvailableByTag('after-lora-relationship');
+                this.gameState.loraRelationship = true;
+                if (this.gameState.mooseFound) {
+                    this.makeDialogAvailableByTag('after-lora-relationship');
+                    this.makeDialogUnavailableByTag('after-frisk-body');
+                }
                 return;
             case 'LORA CONFESSION':
                 this.makeDialogAvailableByTag('after-lora-confession');
@@ -525,7 +538,7 @@ class Game {
             }
         }
     }
-    makeDialogUnvailableByTag(tag) {
+    makeDialogUnavailableByTag(tag) {
         for (var character in dialogs) {
             for (var line in dialogs[character]) {
                 if (dialogs[character][line].tag && dialogs[character][line].tag == tag) {
