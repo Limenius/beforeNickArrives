@@ -30,7 +30,7 @@ const main = () => {
     var game = new Game();
 }
 
-const offsetH = 150;
+const offsetH = 200;
 
 class Game {
     constructor() {
@@ -563,7 +563,7 @@ class Game {
                 this.uiDialog.renderable = false;
                 this.uiActions.renderable = true;
                 this.setUpUIEvents();
-                if (this.gameState.hasTalked.length == 1) {
+                if (this.gameState.hasTalked.length == 6 && this.act == 1) {
                     setTimeout(() => {
                         this.setTalkingText('Ok, I think I have talked to everybody, now what?', 4000);
                         setTimeout(() => {
@@ -579,34 +579,6 @@ class Game {
                 }
                 return;
             case 'LOOK BODY':
-                ////
-                this.uiDialog.renderable = false;
-                this.uiActions.renderable = true;
-                this.setUpUIEvents();
-                setTimeout(() => {
-                    this.setTalkingText('Ok, I have solved this mystery,\nand Nick will have a pretty head to thow to the dogs.', 4000);
-                    setTimeout(() => {
-                        this.ronnie.play();
-                        this.sound.stop('song2', this.songId);
-                        this.ronnieText.text = 'NOOOOOOOOOO!';
-                        setTimeout(() => {
-                            this.ronnieText.text = 'That asshole... \nhe wouldn\'t stop bragging with her picture...';
-                        setTimeout(() => {
-                            this.ronnieText.text = 'I couldn\t stand it.\nShe is just an innocent angel!!';
-                            setTimeout(() => {
-                                this.ronnieText.text = 'And you, what kind\nof crime solver are you?';
-                                setTimeout(() => {
-                                    this.fadeOut(() => {this.end()});
-                                }, 8000);
-                            }, 4000);
-                        }, 4000);
-                        }, 4000);
-
-                    }, 3000);
-                }, 3000);
-                this.act = 3;
-                /////
-                return;
                 this.makeDialogAvailableByTag('after-look-body');
                 this.makeDialogAvailableByTag('ending-interrogate');
                 return;
@@ -653,6 +625,36 @@ class Game {
                 if (this.gameState.hasTalked.indexOf(action.character) == -1) {
                     this.gameState.hasTalked.push(action.character);
                 }
+                return;
+            case 'LORA ACCUSATION':
+                ////
+                this.uiDialog.renderable = false;
+                this.uiActions.renderable = true;
+                this.setUpUIEvents();
+                setTimeout(() => {
+                    this.setTalkingText('Ok, I have solved this mystery,\nand Nick will have a pretty head to thow to the dogs.', 4000);
+                    setTimeout(() => {
+                        this.ronnie.play();
+                        this.sound.stop('song2', this.songId);
+                        this.ronnieText.text = 'NOOOOOOOOOO!';
+                        setTimeout(() => {
+                            this.ronnieText.text = 'That asshole... \nhe wouldn\'t stop bragging with her picture...';
+                        setTimeout(() => {
+                            this.ronnieText.text = 'I couldn\t stand it.\nShe is just an innocent angel!!';
+                            setTimeout(() => {
+                                this.ronnieText.text = 'And you, what kind\nof crime solver are you?';
+                                setTimeout(() => {
+                                    this.fadeOut(() => {this.end()});
+                                }, 8000);
+                            }, 4000);
+                        }, 4000);
+                        }, 4000);
+
+                    }, 3000);
+                }, 3000);
+                this.act = 3;
+                /////
+                return;
                 return;
             default:
                 return;
