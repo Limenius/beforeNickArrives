@@ -79,7 +79,7 @@ const dialogs = {
             response: 'Ok.',
             timeout: 2000,
             available: false,
-            tag: 'introductory',
+            tag: 'after-look-body',
             trigger: {
                 type: 'END DIALOG',
             },
@@ -156,7 +156,7 @@ const dialogs = {
             response: 'Ok, Jack.',
             timeout: 2000,
             available: false,
-            tag: 'introductory',
+            tag: 'after-look-body',
             trigger: {
                 type: 'END DIALOG',
             },
@@ -229,7 +229,7 @@ const dialogs = {
             response: 'Sure.',
             timeout: 2000,
             available: false,
-            tag: 'introductory',
+            tag: 'after-look-body',
             trigger: {
                 type: 'END DIALOG',
             },
@@ -311,7 +311,7 @@ const dialogs = {
             response: 'Ok...',
             timeout: 2000,
             available: false,
-            tag: 'introductory',
+            tag: 'after-look-body',
             trigger: {
                 type: 'END DIALOG',
             },
@@ -403,7 +403,7 @@ const dialogs = {
             response: 'Oh, well...',
             timeout: 2000,
             available: false,
-            tag: 'introductory',
+            tag: 'after-look-body',
             trigger: {
                 type: 'END DIALOG',
             },
@@ -468,7 +468,7 @@ const dialogs = {
             response: 'Good.',
             timeout: 2000,
             available: false,
-            tag: 'introductory',
+            tag: 'after-look-body',
             trigger: {
                 type: 'END DIALOG',
             },
