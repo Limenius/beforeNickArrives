@@ -38,6 +38,7 @@ class Game {
         this.mouseMove = this.mouseMove.bind(this);
         this.click = this.click.bind(this);
         this.clickDialog = this.clickDialog.bind(this);
+        this.fadeOut = this.fadeOut.bind(this);
 
         this.renderer = PIXI.autoDetectRenderer(1000, 480 + offsetH, null, {noWebGl: true, antialias: false});
         this.stage = new PIXI.Container();
@@ -99,6 +100,7 @@ class Game {
         this.introText.anchor.set(0.5, 0.5);
         this.introText.x = 500;
         this.introText.y = 60;
+
         this.introText2 = new PIXI.Text('Press space to play',{fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
         this.introText2.anchor.set(0.5, 0.5);
         this.introText2.x = 500;
@@ -112,8 +114,8 @@ class Game {
 
         const enterPreload = (evt) => {
             if (evt.keyCode == 32) {
-                this.preLoad2();
                 document.removeEventListener('keydown', enterPreload);
+                this.preLoad2();
             }
         }
         document.addEventListener('keydown', enterPreload);
@@ -151,7 +153,7 @@ class Game {
             this.renderer.render(this.stage);
         }
 
-        setTimeout(checkLoaded, 2000);
+        setTimeout(checkLoaded, 20);
     }
 
     renderDialogUI() {
@@ -222,6 +224,11 @@ class Game {
     }
 
     onLoad(loader, resources) {
+        this.phoneText = new PIXI.Text('',{fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
+        this.phoneText.anchor.set(0.5, 0.5);
+        this.phoneText.x = 380;
+        this.phoneText.y = 305;
+
         var bgTexture = new PIXI.Texture(resources.bg.texture, new PIXI.Rectangle(0, 0, 1000, 480));
         var background = new PIXI.Sprite(bgTexture);
         background.anchor.x = 0;
@@ -276,6 +283,7 @@ class Game {
         this.renderDialogUI();
 
         this.stage.addChild(this.elk);
+        this.stage.addChild(this.phoneText);
         this.renderer.render(this.stage);
 
         this.setUpUIEvents();
@@ -290,12 +298,26 @@ class Game {
         //this.animate();
     }
 
-    fadeIn() {
+    fadeIn(callback) {
         this.screenFadeContainer.alpha = this.screenFadeContainer.alpha - 0.05;
         if (this.screenFadeContainer.alpha > 0) {
             setTimeout(this.fadeIn.bind(this), 100);
+        } else {
+            callback && callback();
         }
+    }
 
+    fadeOut(callback) {
+        console.log(callback);
+        this.screenFadeContainer.alpha = this.screenFadeContainer.alpha + 0.05;
+        if (this.screenFadeContainer.alpha < 1) {
+            setTimeout(() => {this.fadeOut(callback)}, 100);
+        } else {
+        console.log('go');
+            this.screenFadeContainer.alpha = 1
+            console.log(callback);
+            callback && callback();
+        }
     }
 
     setUpUIEvents() {
@@ -476,6 +498,36 @@ class Game {
         return this;
     }
 
+    startAct2() {
+        console.log('startAct2');
+        var spacePlay = new PIXI.Text('Press space to play',{fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
+        spacePlay.anchor.set(0.5, 0.5);
+        spacePlay.x = 500;
+        spacePlay.y = 570;
+
+        var nickText = new PIXI.Text('It was Nick.\n\nHe is coming.\n\nIf sees this mess he will kill me.', {fontFamily : 'Pixilator', fontSize: '18px', fill : 0xeeeeee, 'text-align' : 'center', align: 'center'});
+        nickText.anchor.set(0.5, 0.5);
+        nickText.x = 500;
+        nickText.y = 200;
+
+        const enterAct2 = (evt) => {
+            this.songId = this.sound.play('song2');
+            if (evt.keyCode == 32) {
+                this.stage.removeChild(spacePlay);
+                document.removeEventListener('keydown', enterAct2);
+                this.phone.gotoAndStop(0);
+                this.phoneText.renderable = false;
+                this.renderNewUIActions();
+                this.introText2.renderable = false;
+                this.fadeIn();
+            }
+        }
+        this.stage.addChild(spacePlay);
+        this.stage.addChild(nickTextPlay);
+        document.addEventListener('keydown', enterAct2);
+    }
+
+
     dispatch(action) {
         switch (action.type) {
             case 'END DIALOG':
@@ -485,9 +537,14 @@ class Game {
                 if (this.gameState.hasTalked.length == 1) {
                     setTimeout(() => {
                         this.setTalkingText('Ok, I think I have talked to everybody, now what?', 4000);
-                        this.renderNewUIActions();
-                        this.sound.stop('song1', this.songId);
-                        this.songId = this.sound.play('song2');
+                        setTimeOut(() => {
+                            this.phone.play();
+                            this.phoneText.text = 'RIIIING\nRIIING';
+                            setTimeout(() => {
+                                this.sound.stop('song1', this.songId);
+                                this.fadeOut(() => {this.startAct2()});
+                            }, 4000);
+                        }, 3000);
                     }, 3000);
                     this.act = 2;
                 }
