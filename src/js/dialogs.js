@@ -378,7 +378,7 @@ const dialogs = {
             },
             interrogate: true
         },
-        'I\'m sure you killed him, Lora. EVERYTHING is pointing to you.\nIT MUST BE YOU.': {
+        'I\'m sure you killed him, Lora. EVERYTHING is pointing to you. IT MUST BE YOU.': {
             response: 'How you dare...?!',
             available: false,
             timeout: 8000,
