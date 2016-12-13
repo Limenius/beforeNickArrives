@@ -5,7 +5,6 @@ const dialogs = {
             available: true,
             timeout: 2000,
             tag: 'introductory',
-            act: 1,
             interrogate: false
 
             //dispatch(state) => {dis
@@ -21,7 +20,6 @@ const dialogs = {
                 type: 'HAS TALKED',
                 character: 'MATT',
             },
-            act: 1,
             interrogate: false
         },
         'Have you been here long?': {
@@ -29,7 +27,6 @@ const dialogs = {
             available: false,
             timeout: 2500,
             tag: 'after-look-body',
-            act: 1,
             interrogate: true
         },
         'Why does Jhonny have a threatening note with your handwriting in his pocket, Matt?': {
@@ -41,7 +38,6 @@ const dialogs = {
                 type: 'HAS TALKED',
                 character: 'MATT',
             },
-            act: 1,
             interrogate: true
         },
         'Do you recognize this phone number?': {
@@ -49,7 +45,6 @@ const dialogs = {
             available: false,
             timeout: 2000,
             tag: 'after-frisk-flynn',
-            act: 1,
             interrogate: true
         },
         'Any idea why there was a picture of Lora naked behind the moose?': {
@@ -57,7 +52,16 @@ const dialogs = {
             available: false,
             timeout: 6000,
             tag: 'after-frisk-moose',
-            act: 1,
+            interrogate: true
+        },
+        'Why would Jonnhy have Lora\'s number in his pocket?': {
+            response: 'Well, I\'m not the detective here, \nbut what do you think, Jack...?.',
+            available: false,
+            timeout: 6000,
+            tag: 'after-frisk-moose',
+            trigger: {
+                type: 'LORA RELATIONSHIP',
+            },
             interrogate: true
         },
         'Talk to you later.': {
@@ -68,7 +72,6 @@ const dialogs = {
             trigger: {
                 type: 'END DIALOG',
             },
-            act: 1,
             interrogate: false
         }
     },
@@ -77,7 +80,6 @@ const dialogs = {
             response: 'Hi, Jack. This sounds quite good, ugh?',
             available: true,
             timeout: 2500,
-            act: 1,
             interrogate: false
         },
         'What happened here?': {
@@ -89,7 +91,6 @@ const dialogs = {
                 type: 'HAS TALKED',
                 character: 'FLYNN',
             },
-            act: 1,
             interrogate: false
         },
         'Have you seen someone acting weird?': {
@@ -97,7 +98,6 @@ const dialogs = {
             available: false,
             timeout: 2500,
             tag: 'after-look-body',
-            act: 1,
             interrogate: true
         },
         'Why are you still carrying a picture of Lora?': {
@@ -109,7 +109,6 @@ const dialogs = {
                 type: 'HAS TALKED',
                 character: 'FLYNN',
             },
-            act: 1,
             interrogate: true
         },
         'Do you recognize this phone number?': {
@@ -118,10 +117,9 @@ const dialogs = {
             timeout: 3000,
             tag: 'after-frisk-flynn',
             trigger: {
-                type: 'LORA CLUE',
+                type: 'LORA NUMBER',
                 character: 'FLYNN',
             },
-            act: 1,
             interrogate: true
         },
         'Do you recognize this picture, Flynn?': {
@@ -129,7 +127,6 @@ const dialogs = {
             available: false,
             timeout: 3000,
             tag: 'after-frisk-moose',
-            act: 1,
             interrogate: true
         },
         'Ok, enough for now.': {
@@ -140,7 +137,6 @@ const dialogs = {
             trigger: {
                 type: 'END DIALOG',
             },
-            act: 1,
             interrogate: false
         }
     },
@@ -149,7 +145,6 @@ const dialogs = {
             response: 'Hi, Jack, good to see you.',
             available: true,
             timeout: 2500,
-            act: 1,
             interrogate: false
         },
         'What\'s this mess? Nick is going to be mad.': {
@@ -161,7 +156,6 @@ const dialogs = {
                 type: 'HAS TALKED',
                 character: 'RONNIE',
             },
-            act: 1,
             interrogate: false
         },
         'Why are you at the door?': {
@@ -169,7 +163,6 @@ const dialogs = {
             available: false,
             timeout: 2500,
             tag: 'after-look-body',
-            act: 1,
             interrogate: true
         },
         'A fast diet book...?': {
@@ -181,7 +174,6 @@ const dialogs = {
                 type: 'HAS INTERROGATED',
                 character: 'RONNIE',
             },
-            act: 1,
             interrogate: true
         },
         'Do you recognize this phone number?': {
@@ -189,15 +181,13 @@ const dialogs = {
             available: false,
             timeout: 2000,
             tag: 'after-frisk-flynn',
-            act: 1,
             interrogate: true
         },
         'Any idea why there was a picture of Lora naked behind the moose?': {
-            response: 'Erg... No.',
+            response: 'Maybe is not what it looks.',
             available: false,
             timeout: 3000,
             tag: 'after-frisk-moose',
-            act: 1,
             interrogate: true
         },
         'Hold in there.': {
@@ -208,7 +198,6 @@ const dialogs = {
             trigger: {
                 type: 'END DIALOG',
             },
-            act: 1,
             interrogate: false
         }
     },
@@ -217,7 +206,6 @@ const dialogs = {
             response: 'Do I really need to answer that?',
             available: true,
             timeout: 2500,
-            act: 1,
             interrogate: false
         },
         'Can you help me out a bit here?': {
@@ -229,7 +217,6 @@ const dialogs = {
                 type: 'HAS TALKED',
                 character: 'TONNY',
             },
-            act: 1,
             interrogate: false
         },
         'Who was in the room when you came in?': {
@@ -237,7 +224,6 @@ const dialogs = {
             available: false,
             timeout: 2500,
             tag: 'after-look-body',
-            act: 1,
             interrogate: true
         },
         'Johnny has a pack of cigarettes in his pocket. Same brand you have.': {
@@ -249,7 +235,6 @@ const dialogs = {
                 type: 'HAS INTERROGATED',
                 character: 'TONNY',
             },
-            act: 1,
             interrogate: true
         },
         'Do you recognize this phone number?': {
@@ -257,7 +242,6 @@ const dialogs = {
             available: false,
             timeout: 2000,
             tag: 'after-frisk-flynn',
-            act: 1,
             interrogate: true
         },
         'Any idea why there was a picture of Lora naked behind the moose?': {
@@ -265,7 +249,16 @@ const dialogs = {
             available: false,
             timeout: 3000,
             tag: 'after-frisk-moose',
-            act: 1,
+            interrogate: true
+        },
+        'Lora had a secret relationship with Johnny... I wonder if she killed him.\nBut why would?': {
+            response: 'To steal that necklace from him? Because he was\nbecoming a problem for her? Just for fun?\nThat woman doesn\'t need much reason to kill someone.',
+            available: false,
+            timeout: 3000,
+            tag: 'after-lora-confession',
+            trigger: {
+                type: 'LORA MOTIVATION ',
+            },
             interrogate: true
         },
         'Ok... See you later.': {
@@ -276,7 +269,6 @@ const dialogs = {
             trigger: {
                 type: 'END DIALOG',
             },
-            act: 1,
             interrogate: false
         }
     },
@@ -285,7 +277,6 @@ const dialogs = {
             response: 'What do you care, Jack?',
             available: true,
             timeout: 2500,
-            act: 1,
             interrogate: false
         },
         'Do you know why the new guy is dead in the middle of the room?': {
@@ -297,7 +288,6 @@ const dialogs = {
                 type: 'HAS TALKED',
                 character: 'LORA',
             },
-            act: 1,
             interrogate: false
         },
         'Who was here when you arrived?': {
@@ -305,7 +295,6 @@ const dialogs = {
             available: false,
             timeout: 4000,
             tag: 'after-look-body',
-            act: 1,
             interrogate: true
         },
         'Who do you think did this?': {
@@ -317,15 +306,13 @@ const dialogs = {
                 type: 'HAS INTERROGATED',
                 character: 'LORA',
             },
-            act: 1,
             interrogate: true
         },
         'Do you recognize this phone number?': {
             response: 'Oh, leave me alone.',
             available: false,
             timeout: 2000,
-            tag: 'after-frisk-flynn',
-            act: 1,
+            tag: 'after-frisk-body',
             interrogate: true
         },
         'Ehem... nice pearls in this picture, Lora.': {
@@ -333,7 +320,26 @@ const dialogs = {
             available: false,
             timeout: 3000,
             tag: 'after-frisk-moose',
-            act: 1,
+            interrogate: true
+        },
+        'I think Lora may have killed Johnny. But how could she?\nShe came with you and the body was already here...': {
+            response: 'Well, I never said she came WITH me. I saw her entering the room.\nBut we didn\'t arrive together to the building.\nMaybe she was here before.',
+            available: false,
+            timeout: 8000,
+            tag: 'after-lora-motivation',
+            trigger: {
+                type: 'LORA OPPORTUNITY',
+            },
+            interrogate: true
+        },
+        'I\'m sure you killed him, Lora. EVERYTHING is pointing to you.\nIT MUST BE YOU.': {
+            response: 'How you dare...?!',
+            available: false,
+            timeout: 8000,
+            tag: 'after-lora-motivation',
+            trigger: {
+                type: 'LORA OPPORTUNITY',
+            },
             interrogate: true
         },
         'Nice talking to you...': {
@@ -344,7 +350,6 @@ const dialogs = {
             trigger: {
                 type: 'END DIALOG',
             },
-            act: 1,
             interrogate: false
         }
     },
@@ -353,7 +358,6 @@ const dialogs = {
             response: 'Pretty well, Jack, we have some good Scotch here.',
             available: true,
             timeout: 2500,
-            act: 1,
             interrogate: false
         },
         'What happened with Johnny?': {
@@ -365,7 +369,6 @@ const dialogs = {
                 type: 'HAS TALKED',
                 character: 'JOE',
             },
-            act: 1,
             interrogate: false
         },
         'For how long have you been here?': {
@@ -373,7 +376,6 @@ const dialogs = {
             available: false,
             timeout: 2500,
             tag: 'after-look-body',
-            act: 1,
             interrogate: true
         },
         'Do you recognize this phone number?': {
@@ -381,7 +383,6 @@ const dialogs = {
             available: false,
             timeout: 2000,
             tag: 'after-frisk-flynn',
-            act: 1,
             interrogate: true
         },
         'Were you borrowing money from Johnny, Joe?': {
@@ -393,7 +394,6 @@ const dialogs = {
                 type: 'HAS INTERROGATED',
                 character: 'JOE',
             },
-            act: 1,
             interrogate: true
         },
         'Thanks, Joe.': {
@@ -404,7 +404,6 @@ const dialogs = {
             trigger: {
                 type: 'END DIALOG',
             },
-            act: 1,
             interrogate: false
         }
     },
