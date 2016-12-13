@@ -10,6 +10,12 @@
 body {
   font-family: 'Pixilator',sans-serif;
   color: black;
+  background-color: #212a43;
+}
+
+#main-container {
+  width: 1000px;
+  margin: 0 auto;
 }
 
 @font-face {
