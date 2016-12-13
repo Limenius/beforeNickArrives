@@ -273,7 +273,7 @@ const dialogs = {
             interrogate: true
         },
         'Do you recognize this phone number?': {
-            response: 'No idea, Joe.',
+            response: 'No idea, Jack.',
             available: false,
             timeout: 2000,
             tag: 'after-frisk-flynn',
@@ -286,7 +286,7 @@ const dialogs = {
             tag: 'after-frisk-moose',
             interrogate: true
         },
-        'Lora had a secret relationship with Johnny. I wonder if she killed him. But why would she?': {
+        'Lora had a secret relationship with Johnny. I wonder if she killed him. But why would?': {
             response: 'To steal that necklace from him? Because he was\nbecoming a problem for her? Just for fun?\nThat woman doesn\'t need much reason to kill someone.',
             available: false,
             timeout: 3000,

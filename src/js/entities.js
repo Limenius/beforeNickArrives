@@ -541,7 +541,7 @@ const entities = {
             },
         }
     },
-    '#7624C5' : {
+    '#7624c5' : {
         name: 'painting',
         actions: {
             LOOK : {
