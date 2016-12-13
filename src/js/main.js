@@ -7,11 +7,8 @@ import dialogs from './dialogs';
 import Sound from './sound.js';
 
 WebFont.load({
-    google: {
-        families: ['VT323', 'Droid Serif']
-    },
     custom: {
-        families: ["Foo"]
+        families: ['Pixilator']
     },
     active: function() {
         main();
@@ -142,7 +139,6 @@ class Game {
             }
         }
         const checkLoaded = () => {
-            console.log('check');
             this.introText2.renderable = true;
             if (this.loaded) {
                 this.introText2.text = 'Press space to continue'
@@ -217,6 +213,7 @@ class Game {
             PIXI.loader
             .add('bg', './dist/img/room.png')
             .add('bgMap', './dist/img/room-map2.png')
+            .add('phone', './dist/img/phonering.png')
             .load((loader, resources) => {
                 resolve({loader, resources});
             });
@@ -233,6 +230,24 @@ class Game {
 
         this.background = background;
 
+        function getFramesFromSpriteSheet(texture, frameWidth, frameHeight, row, numSprites) {
+            var frames = [];
+            for(var i = 0; i < numSprites; i++) {
+                frames.push(new PIXI.Texture(texture.baseTexture, new PIXI.Rectangle(i * frameWidth, row * frameHeight, frameWidth, frameHeight)));
+            }
+            return frames;
+        }
+        var phoneFrames = getFramesFromSpriteSheet(resources.phone.texture, 58, 44, 0, 4);
+        var phone = new PIXI.extras.MovieClip(phoneFrames);
+        //var phoneTexture = new PIXI.Texture(resources.phone.texture, new PIXI.Rectangle(0, 0, 58, 44));
+        //var phone = new PIXI.Sprite(phoneTexture);
+        phone.animationSpeed = 0.3;
+        phone.position.x = 354;
+        phone.position.y = 324;
+        //phone.play();
+
+        this.phone = phone;
+
         var imgMapTexture = new PIXI.Texture(resources.bgMap.texture, new PIXI.Rectangle(0, 0, 1000, 480));
         var imgMapBg = new PIXI.Sprite(imgMapTexture);
         imgMapBg.anchor.x = 0;
@@ -241,6 +256,8 @@ class Game {
         imgMapBg.position.y = 0;
 
         this.imgMap.addChild(imgMapBg);
+
+
         this.rendererMap.render(this.imgMap);
 
         this.loaded = true;
@@ -251,6 +268,7 @@ class Game {
 
         this.songId = this.sound.play('song1');
         this.stage.addChild(this.background);
+        this.stage.addChild(this.phone);
         this.stage.addChild(this.statusText);
         this.stage.addChild(this.talkingText);
         this.renderUI();
